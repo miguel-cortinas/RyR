@@ -9,27 +9,30 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#fef6f0">
-  <meta name="description" content="¡Estás invitado! Renata & Rubén celebran juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
+  <meta name="description"
+    content="¡Estás invitado! Renata & Rubén celebran juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
   <title>Renata & Rubén · ¡Estás invitado!</title>
 
   <!-- Open Graph / WhatsApp -->
-  <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://ruben-y-renata.pages.dev/">
-  <meta property="og:site_name"   content="Renata & Rubén">
-  <meta property="og:title"       content="¡Estás invitado! · Renata & Rubén">
-  <meta property="og:description" content="¡Estás invitado! Renata & Rubén celebran juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
-  <meta property="og:image"       content="https://ruben-y-renata.pages.dev/img/gracias.png">
-  <meta property="og:image:type"  content="image/png">
-  <meta property="og:image:width" content="390">
-  <meta property="og:image:height" content="650">
-  <meta property="og:image:alt"   content="Renata y Rubén — invitación 24 de julio 2026">
-  <meta property="og:locale"      content="es_MX">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ruben-y-renata.pages.dev/">
+  <meta property="og:site_name" content="Renata & Rubén">
+  <meta property="og:title" content="¡Estás invitado! · Renata & Rubén">
+  <meta property="og:description"
+    content="¡Estás invitado! Renata & Rubén celebran juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
+  <meta property="og:image" content="https://ruben-y-renata.pages.dev/img/gracias2.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Renata y Rubén — invitación 24 de julio 2026">
+  <meta property="og:locale" content="es_MX">
 
   <!-- Twitter Card (por si se comparte en otras plataformas) -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="¡Estás invitado! · Renata & Rubén">
-  <meta name="twitter:description" content="¡Estás invitado! Renata & Rubén celebran juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
-  <meta name="twitter:image"       content="https://ruben-y-renata.pages.dev/img/gracias.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="¡Estás invitado! · Renata & Rubén">
+  <meta name="twitter:description"
+    content="¡Estás invitado! Renata & Rubén celebran juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
+  <meta name="twitter:image" content="https://ruben-y-renata.pages.dev/img/gracias2.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -184,7 +187,7 @@
         radial-gradient(ellipse 80% 60% at 50% 44%, #ffffff 0%, #f7f4f0 45%, #ede9e3 100%),
         /* Vetas de papel sutiles */
         repeating-linear-gradient(105deg, transparent, transparent 200px, rgba(185, 178, 170, 0.07) 200px, rgba(185, 178, 170, 0.07) 201px),
-        repeating-linear-gradient(68deg,  transparent, transparent 260px, rgba(195, 188, 180, 0.05) 260px, rgba(195, 188, 180, 0.05) 261px);
+        repeating-linear-gradient(68deg, transparent, transparent 260px, rgba(195, 188, 180, 0.05) 260px, rgba(195, 188, 180, 0.05) 261px);
     }
 
     #splash-shell.gone {
@@ -223,25 +226,61 @@
 
     /* Animaciones de flotación suave y diferenciada */
     @keyframes wmFloat1 {
-      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px); }
-      50%       { transform: var(--wm-base-t, rotate(0deg)) translateY(-7px); }
-    }
-    @keyframes wmFloat2 {
-      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px); }
-      50%       { transform: var(--wm-base-t, rotate(0deg)) translateY(6px); }
-    }
-    @keyframes wmFloat3 {
-      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px); }
-      33%       { transform: var(--wm-base-t, rotate(0deg)) translateY(-5px) translateX(4px); }
-      66%       { transform: var(--wm-base-t, rotate(0deg)) translateY(4px) translateX(-3px); }
+
+      0%,
+      100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px);
+      }
+
+      50% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(-7px);
+      }
     }
 
-    #watermark-names span:nth-child(odd)  { animation: wmFloat1 8s  ease-in-out infinite; }
-    #watermark-names span:nth-child(even) { animation: wmFloat2 10s ease-in-out infinite; }
-    #watermark-names span:nth-child(3n)   { animation: wmFloat3 12s ease-in-out infinite; }
+    @keyframes wmFloat2 {
+
+      0%,
+      100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px);
+      }
+
+      50% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(6px);
+      }
+    }
+
+    @keyframes wmFloat3 {
+
+      0%,
+      100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px);
+      }
+
+      33% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(-5px) translateX(4px);
+      }
+
+      66% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(4px) translateX(-3px);
+      }
+    }
+
+    #watermark-names span:nth-child(odd) {
+      animation: wmFloat1 8s ease-in-out infinite;
+    }
+
+    #watermark-names span:nth-child(even) {
+      animation: wmFloat2 10s ease-in-out infinite;
+    }
+
+    #watermark-names span:nth-child(3n) {
+      animation: wmFloat3 12s ease-in-out infinite;
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      #watermark-names span { animation: none !important; }
+      #watermark-names span {
+        animation: none !important;
+      }
     }
 
     #cover.leaving {
