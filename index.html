@@ -1,0 +1,3138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light only">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#fef6f0">
+  <meta name="description" content="Estas invitado a celebrar con Renata y Ruben — 24 de Julio 2026">
+  <title>Renata & Ruben · Fiesta Doble</title>
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Estas invitado · Renata & Ruben">
+  <meta property="og:description" content="Dos mundos, un día. Unete a la celebración el 24 de julio de 2026.">
+  <meta property="og:locale" content="es_MX">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Bebas+Neue&family=Oswald:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════
+     TOKENS
+  ═══════════════════════════════════════ */
+    :root {
+      /* Zona A — Renata · Coquette */
+      --cq-cream: #fef6f0;
+      --cq-blush: #fce8ef;
+      --cq-rose: #e8a0b4;
+      --cq-rose-dark: #c97a96;
+      --cq-nude: #d4a5a5;
+      --cq-gold: #c9a96e;
+      --cq-text: #3e1f2f;
+      --cq-text-mid: #7a4055;
+      --cq-text-light: #b08090;
+      --ff-serif: 'Playfair Display', Georgia, serif;
+      --ff-italic: 'Cormorant Garamond', serif;
+      --ff-sans: 'Lato', sans-serif;
+
+      /* Zona B — Ruben · Deportes (atletico general) */
+      --mlb-navy: #14161a;
+      --mlb-navy-2: #1c1f24;
+      --mlb-navy-3: #262a30;
+      --mlb-red: #d94a2b;
+      --mlb-red-bright: #f2632f;
+      --mlb-leather: #c9a15a;
+      --mlb-chalk: #e8e3d8;
+      --mlb-text: #f2ede4;
+      --mlb-text-mid: #c8cbd2;
+      --ff-mlb-h: 'Bebas Neue', sans-serif;
+      --ff-mlb-b: 'Oswald', sans-serif;
+
+      /* Shared */
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ═══ RESET ═══ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+      overscroll-behavior-y: none;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-family: var(--ff-sans);
+      color: var(--cq-text);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    a {
+      cursor: pointer;
+    }
+
+    html,
+    body,
+    #splash,
+    #invitation,
+    section,
+    div,
+    span,
+    p,
+    h1,
+    h2,
+    h3,
+    a,
+    button {
+      forced-color-adjust: none;
+      -webkit-forced-color-adjust: none;
+      color-scheme: light only;
+    }
+
+    @media (prefers-color-scheme: dark) {
+
+      html,
+      body {
+        background-color: var(--cq-cream) !important;
+        color: var(--cq-text) !important;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     SPLASH SCREEN
+  ═══════════════════════════════════════ */
+    /* ═══════════════════════════════════════
+     COVER — ENVELOPE INTRO
+  ═══════════════════════════════════════ */
+    #splash-shell {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100lvh;
+      height: calc(var(--vh, 1vh) * 100);
+      z-index: 500;
+      overflow: hidden;
+      pointer-events: none;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    #cover {
+      position: absolute;
+      inset: 0;
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 26px;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      pointer-events: auto;
+      transition: opacity 0.75s ease, transform 0.75s var(--ease-out);
+      /* Fondo premium: papel marfil con luz suave y tono cálido */
+      background-color: #faf7f4;
+      background-image:
+        /* Luz de accent rosado en esquina superior derecha */
+        radial-gradient(ellipse 70% 55% at 92% 8%, rgba(252, 220, 230, 0.55) 0%, transparent 65%),
+        /* Sombra cálida inferior izquierda */
+        radial-gradient(ellipse 65% 55% at 8% 96%, rgba(240, 218, 200, 0.45) 0%, transparent 65%),
+        /* Luz central suave */
+        radial-gradient(ellipse 80% 60% at 50% 44%, #ffffff 0%, #f7f4f0 45%, #ede9e3 100%),
+        /* Vetas de papel sutiles */
+        repeating-linear-gradient(105deg, transparent, transparent 200px, rgba(185, 178, 170, 0.07) 200px, rgba(185, 178, 170, 0.07) 201px),
+        repeating-linear-gradient(68deg,  transparent, transparent 260px, rgba(195, 188, 180, 0.05) 260px, rgba(195, 188, 180, 0.05) 261px);
+    }
+
+    #splash-shell.gone {
+      display: none;
+    }
+
+    /* ═══ Watermark de nombres — fondo del splash ═══ */
+    #watermark-names {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    #watermark-names span {
+      position: absolute;
+      white-space: nowrap;
+      user-select: none;
+      line-height: 1;
+      will-change: transform;
+    }
+
+    #watermark-names .wm-renata {
+      font-family: var(--ff-italic);
+      font-style: italic;
+      font-weight: 400;
+      color: rgba(201, 122, 150, 0.16);
+    }
+
+    #watermark-names .wm-ruben {
+      font-family: var(--ff-mlb-h);
+      letter-spacing: 3px;
+      color: rgba(20, 22, 26, 0.09);
+    }
+
+    /* Animaciones de flotación suave y diferenciada */
+    @keyframes wmFloat1 {
+      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px); }
+      50%       { transform: var(--wm-base-t, rotate(0deg)) translateY(-7px); }
+    }
+    @keyframes wmFloat2 {
+      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px); }
+      50%       { transform: var(--wm-base-t, rotate(0deg)) translateY(6px); }
+    }
+    @keyframes wmFloat3 {
+      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px); }
+      33%       { transform: var(--wm-base-t, rotate(0deg)) translateY(-5px) translateX(4px); }
+      66%       { transform: var(--wm-base-t, rotate(0deg)) translateY(4px) translateX(-3px); }
+    }
+
+    #watermark-names span:nth-child(odd)  { animation: wmFloat1 8s  ease-in-out infinite; }
+    #watermark-names span:nth-child(even) { animation: wmFloat2 10s ease-in-out infinite; }
+    #watermark-names span:nth-child(3n)   { animation: wmFloat3 12s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      #watermark-names span { animation: none !important; }
+    }
+
+    #cover.leaving {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.96);
+    }
+
+    /* Envelope wrapper */
+    #envelope-wrapper {
+      position: relative;
+      z-index: 2;
+      width: min(85vw, 400px);
+      aspect-ratio: 3 / 2;
+      perspective: 3000px;
+      opacity: 0;
+      transform: scale(0.94);
+      animation: popIn 1.2s var(--ease-spring) 0.2s forwards;
+    }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    #cuerpo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 28px rgba(100, 55, 35, 0.18));
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    #carta-wrap {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%) translateY(10%);
+      width: 45.3%;
+      aspect-ratio: 172 / 242;
+      opacity: 0;
+      z-index: 4;
+      pointer-events: none;
+      filter: drop-shadow(0 14px 36px rgba(100, 50, 35, 0.24));
+    }
+
+    /* Animacion de salida de la carta */
+    #cover.is-opening #carta-wrap {
+      animation: slideLetter 2.2s var(--ease-out) 0.8s forwards;
+    }
+
+    @keyframes slideLetter {
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10%);
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-60%);
+      }
+    }
+
+    #carta {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #solapa-wrap {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      transform-origin: 50% 14.71%;
+      transform: rotateX(0deg);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    #cover.is-opening #solapa-wrap {
+      transition: transform 1.5s cubic-bezier(0.37, 0, 0.63, 1), opacity 0.4s ease-out 1.2s;
+      transform: rotateX(-120deg);
+      opacity: 0;
+    }
+
+    #solapa {
+      position: absolute;
+      top: -15.5px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    #sello {
+      position: absolute;
+      left: 49.84%;
+      top: 57.35%;
+      transform: translateX(-50%) translateY(-50%) scale(1);
+      width: 16.3%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 10px rgba(100, 55, 25, 0.28));
+      z-index: 5;
+      pointer-events: none;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    #cover.is-opening #sello {
+      transform: translateX(-50%) translateY(-50%) scale(1.3);
+      opacity: 0;
+    }
+
+    /* Hint */
+    #hint-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease-out) 0.8s forwards;
+    }
+
+    #cover.is-opening #hint-wrap {
+      opacity: 0 !important;
+      transition: opacity 0.3s ease;
+    }
+
+    #hint {
+      font-family: var(--ff-sans);
+      font-size: clamp(9px, 2.5vw, 11px);
+      font-weight: 400;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: #a08c84;
+      animation: pulse 2.5s ease-in-out infinite;
+      white-space: nowrap;
+    }
+
+    /* Halo pulsante */
+    .pulse-halo {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4px;
+    }
+
+    .pulse-halo::before,
+    .pulse-halo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid #a58e82;
+      animation: haloRipple 2.2s ease-out infinite;
+    }
+
+    .pulse-halo::after {
+      animation-delay: 1.1s;
+      opacity: 0.5;
+    }
+
+    .pulse-halo .halo-core {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #a58e82;
+      opacity: 0.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes haloRipple {
+      0% {
+        transform: scale(0.5);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: scale(1.9);
+        opacity: 0;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     MUSIC BUBBLE
+  ═══════════════════════════════════════ */
+    #music-bubble {
+      position: fixed;
+      bottom: max(24px, env(safe-area-inset-bottom, 24px));
+      right: 18px;
+      z-index: 400;
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+    }
+
+    #music-bubble.show {
+      display: flex;
+    }
+
+    #music-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s var(--ease-spring), box-shadow 0.3s ease, background 0.5s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
+      touch-action: manipulation;
+    }
+
+    #music-btn.zone-a {
+      background: linear-gradient(135deg, #e8a0b4 0%, #c97a96 100%);
+    }
+
+    #music-btn.zone-b {
+      background: linear-gradient(135deg, #1c1f24 0%, #d94a2b 100%);
+    }
+
+    #music-btn:active {
+      transform: scale(0.92);
+    }
+
+    #music-btn:hover {
+      transform: scale(1.06);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.38);
+    }
+
+    .eq-bars {
+      display: none;
+      gap: 2px;
+      align-items: flex-end;
+      height: 16px;
+    }
+
+    #music-btn.playing .eq-bars {
+      display: flex;
+    }
+
+    #music-btn.playing .ico-music {
+      display: none;
+    }
+
+    .eq-bar {
+      width: 3px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.95);
+      animation: eqB 0.8s ease-in-out infinite;
+    }
+
+    .eq-bar:nth-child(1) {
+      height: 8px;
+    }
+
+    .eq-bar:nth-child(2) {
+      height: 14px;
+      animation-delay: .15s;
+    }
+
+    .eq-bar:nth-child(3) {
+      height: 10px;
+      animation-delay: .3s;
+    }
+
+    .eq-bar:nth-child(4) {
+      height: 6px;
+      animation-delay: .1s;
+    }
+
+    @keyframes eqB {
+
+      0%,
+      100% {
+        transform: scaleY(0.35);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+    }
+
+    .zone-ripple {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      animation: ripple 0.55s var(--ease-out) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes ripple {
+      from {
+        transform: scale(0);
+        opacity: 0.6;
+      }
+
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     INVITATION WRAPPER
+  ═══════════════════════════════════════ */
+    #invitation {
+      display: none;
+    }
+
+    #invitation.visible {
+      display: block;
+    }
+
+    /* ═══════════════════════════════════════
+     ZONA A — RENATA · COQUETTE
+  ═══════════════════════════════════════ */
+    #zona-a {
+      background: var(--cq-cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Patrón de fondo: dots sutiles */
+    #zona-a::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(rgba(201, 122, 150, 0.2) 1px, transparent 1.5px),
+        radial-gradient(ellipse 60% 50% at 80% 15%, rgba(249, 212, 222, 0.8) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 60% at 10% 80%, rgba(232, 160, 180, 0.4) 0%, transparent 60%);
+      background-size: 24px 24px, 100% 100%, 100% 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Borde encaje superior */
+    .lace-top {
+      width: 100%;
+      height: 24px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .lace-top svg {
+      display: block;
+    }
+
+    /* ── Hero A ── */
+    #hero-a {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(70px, 12vw, 100px) clamp(20px, 6vw, 40px) clamp(50px, 8vw, 70px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .a-eyebrow {
+      font-family: var(--ff-sans);
+      font-size: clamp(8px, 2vw, 9px);
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cq-rose-dark);
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease-out) 0.3s forwards;
+    }
+
+    /* Lazo SVG mejorado */
+    .bow-wrap {
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: fadeDown 0.9s var(--ease-spring) 0.4s forwards;
+    }
+
+    .hero-a-name {
+      font-family: var(--ff-serif);
+      font-size: clamp(54px, 19vw, 100px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cq-text);
+      line-height: 0.92;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.55s forwards;
+    }
+
+    .hero-a-age {
+      font-family: var(--ff-italic);
+      font-size: clamp(14px, 4vw, 19px);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cq-rose-dark);
+      letter-spacing: 2px;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 0.7s forwards;
+    }
+
+    /* Cadena de perlas SVG */
+    .pearl-chain {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 0 auto 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s var(--ease-out) 0.85s forwards;
+    }
+
+    .hero-a-quote {
+      font-family: var(--ff-italic);
+      font-size: clamp(19px, 5.5vw, 26px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cq-text-mid);
+      line-height: 1.6;
+      max-width: 300px;
+      margin: 0 auto 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s var(--ease-out) 1s forwards;
+    }
+
+    .scroll-hint-a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.3s forwards;
+    }
+
+    .scroll-hint-a span {
+      font-family: var(--ff-sans);
+      font-size: 8px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--cq-text-light);
+    }
+
+    .chevron-a {
+      width: 12px;
+      height: 12px;
+      border-right: 1.5px solid var(--cq-rose-dark);
+      border-bottom: 1.5px solid var(--cq-rose-dark);
+      transform: rotate(45deg);
+      animation: chev 2s ease-in-out infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes chev {
+
+      0%,
+      100% {
+        transform: rotate(45deg) translateY(0);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: rotate(45deg) translateY(5px);
+        opacity: 0.8;
+      }
+    }
+
+    /* Pétalos */
+    .petal {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0;
+      animation: petalFall linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes petalFall {
+      0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 0.55;
+      }
+
+      92% {
+        opacity: 0.25;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    /* ── Secciones Zona A ── */
+    .sec-a {
+      padding: clamp(48px, 8vw, 72px) clamp(20px, 6vw, 32px);
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sec-a-eyebrow {
+      font-family: var(--ff-sans);
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cq-rose-dark);
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .sec-a-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 7.5vw, 40px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cq-text);
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 28px;
+    }
+
+    /* Tarjeta evento Zona A - Liquid Glass */
+    .event-card-a {
+      background: rgba(255, 255, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: clamp(22px, 5vw, 32px) clamp(18px, 4vw, 28px);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      box-shadow: 0 16px 40px rgba(201, 122, 150, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      position: relative;
+      z-index: 2;
+    }
+
+    .ev-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(232, 160, 180, 0.18);
+    }
+
+    .ev-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .ev-icon-a {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(140deg, var(--cq-blush), var(--cq-rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .ev-label {
+      font-family: var(--ff-sans);
+      font-size: clamp(9px, 2.2vw, 10px);
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cq-rose-dark);
+      margin-bottom: 3px;
+    }
+
+    .ev-value-a {
+      font-family: var(--ff-italic);
+      font-size: clamp(17px, 4.8vw, 21px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cq-text);
+      line-height: 1.35;
+    }
+
+    a.ev-value-a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.ev-value-a:hover {
+      color: var(--cq-rose-dark);
+    }
+
+    /* Divisores zona A mejorados */
+    .orn-a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 4px 0;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .orn-line-a {
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cq-rose));
+    }
+
+    .orn-line-a.r {
+      background: linear-gradient(90deg, var(--cq-rose), transparent);
+    }
+
+    .orn-dot-a {
+      width: 5px;
+      height: 5px;
+      background: var(--cq-rose-dark);
+      transform: rotate(45deg);
+      opacity: 0.55;
+      flex-shrink: 0;
+    }
+
+    .orn-dot-a.lg {
+      width: 7px;
+      height: 7px;
+      opacity: 0.85;
+    }
+
+    /* Mapa — estilo Coquette */
+    .map-wrap-a {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(232, 160, 180, 0.38);
+      box-shadow: 0 8px 40px rgba(201, 122, 150, 0.15);
+      position: relative;
+      aspect-ratio: 16/9;
+    }
+
+    .map-frame-a {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(0.92) sepia(0.06);
+    }
+
+    .map-badge-a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--cq-rose), var(--cq-rose-dark));
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-family: var(--ff-sans);
+      font-size: clamp(9px, 2.5vw, 11px);
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      margin-top: 14px;
+      box-shadow: 0 4px 14px rgba(201, 122, 150, 0.45);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .map-badge-a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(201, 122, 150, 0.55);
+    }
+
+    /* Aviso alberca — UNICO, estilo Coquette Liquid Glass */
+    .pool-card-a {
+      background: linear-gradient(135deg, rgba(249, 212, 222, 0.3), rgba(232, 160, 180, 0.15));
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 20px;
+      padding: clamp(22px, 5vw, 32px) clamp(18px, 4vw, 28px);
+      backdrop-filter: blur(16px) saturate(160%);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      box-shadow: 0 16px 40px rgba(201, 122, 150, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      position: relative;
+      z-index: 2;
+    }
+
+    .pool-header-a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .pool-icon-wrap {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(140deg, var(--cq-blush), var(--cq-rose));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pool-title-a {
+      font-family: var(--ff-serif);
+      font-size: clamp(18px, 5vw, 24px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cq-text);
+      line-height: 1.2;
+    }
+
+    .pool-items-a {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .pool-item-a {
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid rgba(232, 160, 180, 0.28);
+      border-radius: 11px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ff-italic);
+      font-size: clamp(13px, 3.5vw, 15px);
+      font-style: italic;
+      color: var(--cq-text-mid);
+    }
+
+    /* (Divisores Zona A ya definidos arriba) */
+
+    /* ═══════════════════════════════════════
+     ZONA DE TRANSICION — THE PITCH
+  ═══════════════════════════════════════ */
+    #transition-zone {
+      position: relative;
+      height: 100svh;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #050d14;
+    }
+
+    /* Fondo A (rosa) — sale con clip-path */
+    .tr-bg-a {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, var(--cq-cream) 0%, var(--cq-blush) 55%, var(--cq-rose) 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transition: clip-path 0.9s var(--ease-expo);
+      will-change: clip-path;
+    }
+
+    #transition-zone.activated .tr-bg-a {
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    }
+
+    #transition-zone.reset .tr-bg-a {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      transition: clip-path 0.7s var(--ease-expo);
+    }
+
+    /* Fondo B (cancha verde) — entra con clip-path desde la derecha */
+    .tr-bg-b {
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(90deg,
+          rgba(255, 255, 255, 0.08) 0px, rgba(255, 255, 255, 0.08) 1px,
+          transparent 1px, transparent 60px),
+        repeating-linear-gradient(0deg,
+          rgba(255, 255, 255, 0.06) 0px, rgba(255, 255, 255, 0.06) 1px,
+          transparent 1px, transparent 60px),
+        linear-gradient(160deg, #1a5c28 0%, #1c6b2e 50%, #22703a 100%);
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      transition: clip-path 0.9s var(--ease-expo);
+      will-change: clip-path;
+    }
+
+    #transition-zone.activated .tr-bg-b {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    #transition-zone.reset .tr-bg-b {
+      clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+      transition: clip-path 0.7s var(--ease-expo);
+    }
+
+    /* Líneas de fractura SVG */
+    .crack-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 4;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    #transition-zone.cracking .crack-svg {
+      opacity: 1;
+    }
+
+    #transition-zone.reset .crack-svg {
+      opacity: 0;
+      transition: opacity 0.4s ease 0s;
+    }
+
+    /* Pelota de béisbol */
+    .tr-baseball {
+      position: relative;
+      z-index: 5;
+      opacity: 0;
+      transform: translateX(-260px) translateY(90px) scale(0.5) rotate(-45deg);
+      transition: none;
+      filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.7));
+    }
+
+    #transition-zone.activated .tr-baseball {
+      animation: ballPitch 0.65s var(--ease-expo) 0.15s forwards;
+    }
+
+    #transition-zone.reset .tr-baseball {
+      animation: ballReset 0.4s var(--ease-expo) forwards;
+    }
+
+    @keyframes ballPitch {
+      0% {
+        opacity: 0;
+        transform: translateX(-260px) translateY(90px) scale(0.5) rotate(-45deg);
+      }
+
+      60% {
+        opacity: 1;
+      }
+
+      85% {
+        transform: translateX(6px) translateY(-4px) scale(1.08) rotate(4deg);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1) rotate(0deg);
+      }
+    }
+
+    @keyframes ballReset {
+      0% {
+        opacity: 1;
+        transform: translateX(0) translateY(0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateX(-260px) translateY(90px) scale(0.5) rotate(-45deg);
+      }
+    }
+
+    /* Contenedor central transicion */
+    .tr-center {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* Texto "y ahora" — visible solo antes de que inicie la animacion */
+    .tr-text-a {
+      font-family: var(--ff-italic);
+      font-size: clamp(16px, 4.5vw, 24px);
+      font-style: italic;
+      color: var(--cq-text-mid);
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      position: absolute;
+      top: -56px;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* Se oculta al activar la transicion */
+    #transition-zone.cracking .tr-text-a,
+    #transition-zone.activated .tr-text-a {
+      opacity: 0;
+    }
+
+    #transition-zone.reset .tr-text-a {
+      opacity: 1;
+      transition: opacity 0.4s ease 0.3s;
+    }
+
+    .tr-text-b {
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(36px, 13vw, 80px);
+      letter-spacing: 5px;
+      color: var(--mlb-text);
+      text-align: center;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity 0.5s ease 1.2s;
+      position: absolute;
+      bottom: -80px;
+      white-space: nowrap;
+    }
+
+    #transition-zone.activated .tr-text-b {
+      opacity: 1;
+    }
+
+    #transition-zone.reset .tr-text-b {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Partículas de impacto */
+    #tr-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 6;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: pBurst var(--d, 0.7s) var(--ease-out) var(--dl, 0s) forwards;
+    }
+
+    @keyframes pBurst {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx, 40px), var(--ty, -60px)) scale(0);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     ZONA B — RUBEN · DEPORTES
+  ═══════════════════════════════════════ */
+    #zona-b {
+      background: #1a5228;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cancha: franjas de pasto alternadas + lineas blancas */
+    #zona-b::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        /* Lineas blancas horizontales de cancha */
+        repeating-linear-gradient(0deg,
+          transparent 0px,
+          transparent 78px,
+          rgba(255, 255, 255, 0.18) 78px,
+          rgba(255, 255, 255, 0.18) 80px),
+        /* Linea central vertical */
+        linear-gradient(90deg,
+          transparent calc(50% - 0.5px),
+          rgba(255, 255, 255, 0.12) calc(50% - 0.5px),
+          rgba(255, 255, 255, 0.12) calc(50% + 0.5px),
+          transparent calc(50% + 0.5px)),
+        /* Franjas de pasto alternadas */
+        repeating-linear-gradient(0deg,
+          rgba(26, 82, 40, 1) 0px,
+          rgba(26, 82, 40, 1) 40px,
+          rgba(22, 72, 34, 1) 40px,
+          rgba(22, 72, 34, 1) 80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Vinieta perimetral para legibilidad */
+    #zona-b::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(5, 14, 8, 0.78) 0%,
+          rgba(5, 14, 8, 0.08) 18%,
+          transparent 38%,
+          transparent 62%,
+          rgba(5, 14, 8, 0.12) 76%,
+          rgba(5, 14, 8, 0.72) 100%),
+        radial-gradient(ellipse 70% 30% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Linea blanca superior de cancha */
+    .stitch-top {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.85);
+      width: 100%;
+      position: relative;
+      box-shadow: 0 0 16px rgba(255, 255, 255, 0.35), 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .stitch-top::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(90deg,
+          rgba(255, 255, 255, 0.6) 0, rgba(255, 255, 255, 0.6) 14px,
+          transparent 14px, transparent 28px);
+    }
+
+    /* ── Hero B ── */
+    #hero-b {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: clamp(70px, 12vw, 100px) clamp(20px, 6vw, 40px) clamp(50px, 8vw, 70px);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Numero de jersey fantasma */
+    .jersey-ghost {
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(110px, 35vw, 200px);
+      color: rgba(255, 255, 255, 0.04);
+      line-height: 0.85;
+      position: absolute;
+      top: clamp(40px, 8vw, 80px);
+      right: -8px;
+      letter-spacing: -4px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .b-eyebrow {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(9px, 2.5vw, 11px);
+      font-weight: 300;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      color: var(--mlb-red-bright);
+      margin-bottom: 18px;
+      opacity: 0;
+      animation: slideLeft 0.7s var(--ease-out) 0.3s forwards;
+    }
+
+    /* Patch / insignia MLB */
+    .mlb-patch {
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeDown 0.8s var(--ease-spring) 0.4s forwards;
+    }
+
+    .hero-b-name {
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(58px, 21vw, 118px);
+      letter-spacing: 4px;
+      color: var(--mlb-text);
+      line-height: 0.88;
+      text-shadow: 0 0 60px rgba(217, 74, 43, 0.35), 0 4px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 8px;
+      opacity: 0;
+      animation: slideLeft 0.9s var(--ease-out) 0.5s forwards;
+    }
+
+    .hero-b-age {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(12px, 3.5vw, 16px);
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--mlb-leather);
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: slideLeft 0.8s var(--ease-out) 0.65s forwards;
+    }
+
+    /* Divisor costura */
+    .stitch-div {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 0 auto 28px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.8s forwards;
+    }
+
+    .st-line {
+      height: 2px;
+      width: 44px;
+      background: var(--mlb-red);
+    }
+
+    .st-dots {
+      display: flex;
+      gap: 4px;
+      padding: 0 8px;
+    }
+
+    .st-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--mlb-leather);
+    }
+
+    .hero-b-text {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(15px, 4.5vw, 20px);
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: rgba(242, 237, 228, 0.92);
+      line-height: 1.65;
+      max-width: 290px;
+      margin: 0 auto 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .scroll-hint-b {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.2s forwards;
+    }
+
+    .scroll-hint-b span {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(7px, 2vw, 8px);
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--mlb-text-mid);
+    }
+
+    .chevron-b {
+      width: 12px;
+      height: 12px;
+      border-right: 1.5px solid var(--mlb-leather);
+      border-bottom: 1.5px solid var(--mlb-leather);
+      transform: rotate(45deg);
+      animation: chev 2s ease-in-out infinite;
+      opacity: 0.5;
+    }
+
+    /* ── Secciones Zona B ── */
+    .sec-b {
+      padding: clamp(48px, 8vw, 72px) clamp(20px, 6vw, 32px);
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sec-b-eyebrow {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(9px, 2.2vw, 10px);
+      font-weight: 400;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: var(--mlb-red-bright);
+      text-align: center;
+      margin-bottom: 8px;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .sec-b-title {
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(36px, 12vw, 60px);
+      letter-spacing: 4px;
+      color: var(--mlb-chalk);
+      text-align: center;
+      line-height: 1;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ──── MARCADOR SPLIT-FLAP (volteo autentico) ──── */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(6px, 2vw, 12px);
+    }
+
+    /* Tarjeta total */
+    .flip-card {
+      position: relative;
+      perspective: 300px;
+      text-align: center;
+    }
+
+    /* Panel interno que contiene superior e inferior */
+    .flip-inner {
+      position: relative;
+      background: linear-gradient(180deg, #2a2f38 0%, #1a1d24 100%);
+      border-radius: 8px;
+      box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+      padding: clamp(12px, 3vw, 18px) 4px clamp(9px, 2.5vw, 13px);
+      overflow: hidden;
+    }
+
+    /* Bisagra central */
+    .flip-inner::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(0, 0, 0, 0.75);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04);
+      transform: translateY(-50%);
+      z-index: 4;
+    }
+
+    /* Reflejo superior */
+    .flip-inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 3;
+      border-radius: 8px 8px 0 0;
+    }
+
+    /* Numero visible */
+    .flip-num {
+      display: block;
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(30px, 9.5vw, 50px);
+      letter-spacing: 2px;
+      color: var(--mlb-chalk);
+      line-height: 1;
+      position: relative;
+      z-index: 2;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Ficha que vola — mitad superior */
+    .flip-flap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 10;
+      transform-origin: bottom center;
+      transform-style: preserve-3d;
+    }
+
+    .flip-flap.top {
+      top: 0;
+      height: 50%;
+      transform-origin: bottom center;
+    }
+
+    .flip-flap.bot {
+      bottom: 0;
+      height: 50%;
+      transform-origin: top center;
+    }
+
+    .flip-flap-num {
+      display: block;
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(30px, 9.5vw, 50px);
+      letter-spacing: 2px;
+      color: var(--mlb-chalk);
+      line-height: calc(clamp(30px, 9.5vw, 50px) * 1);
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(180deg, #2a2f38 0%, #1a1d24 100%);
+      width: 100%;
+    }
+
+    .flip-flap.top .flip-flap-num {
+      position: relative;
+      top: 0;
+    }
+
+    .flip-flap.bot .flip-flap-num {
+      position: relative;
+      bottom: 0;
+      transform: translateY(-50%);
+    }
+
+    /* Animacion de volteo */
+    @keyframes flapDown {
+      0% {
+        transform: rotateX(0deg);
+      }
+
+      100% {
+        transform: rotateX(-90deg);
+      }
+    }
+
+    @keyframes flapUp {
+      0% {
+        transform: rotateX(90deg);
+      }
+
+      100% {
+        transform: rotateX(0deg);
+      }
+    }
+
+    .flip-flap.anim-down {
+      animation: flapDown 0.22s cubic-bezier(0.4, 0, 0.6, 1) forwards;
+    }
+
+    .flip-flap.anim-up {
+      animation: flapUp 0.22s cubic-bezier(0.4, 0, 0.6, 1) 0.22s forwards;
+    }
+
+    /* Rivets / tornillos de la bisagra */
+    .flip-rivet {
+      position: absolute;
+      top: calc(50% - 2px);
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #555, #222);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 5;
+    }
+
+    .flip-rivet.l {
+      left: 5px;
+    }
+
+    .flip-rivet.r {
+      right: 5px;
+    }
+
+    /* Etiqueta debajo */
+    .flip-lbl {
+      display: block;
+      margin-top: 6px;
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(7px, 1.8vw, 8px);
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mlb-red-bright);
+    }
+
+    /* Diamante de béisbol decorativo */
+    .diamond-deco {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    /* Tarjeta scoreboard Zona B */
+    .scoreboard-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .scoreboard-header {
+      background: var(--mlb-red);
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .scoreboard-header span {
+      font-family: var(--ff-mlb-h);
+      font-size: clamp(13px, 3.5vw, 16px);
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    .scoreboard-body {
+      padding: 6px 0;
+    }
+
+    .sc-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px clamp(16px, 4vw, 22px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .sc-row:last-child {
+      border-bottom: none;
+    }
+
+    .sc-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(217, 74, 43, 0.15);
+      border: 1px solid rgba(217, 74, 43, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sc-label {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(8px, 2.2vw, 9px);
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--mlb-red-bright);
+      margin-bottom: 3px;
+    }
+
+    .sc-value {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(15px, 4vw, 18px);
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: var(--mlb-text);
+      line-height: 1.35;
+    }
+
+    a.sc-value {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    a.sc-value:hover {
+      color: var(--mlb-leather);
+    }
+
+    /* Divisores Zona B — centrados y consistentes */
+    .orn-b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 4px 0;
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .orn-line-b {
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35));
+    }
+
+    .orn-line-b.r {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), transparent);
+    }
+
+    .orn-dot-b {
+      width: 5px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      opacity: 0.6;
+      flex-shrink: 0;
+    }
+
+    /* Mapa Zona B */
+    .map-wrap {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      position: relative;
+      aspect-ratio: 16/9;
+    }
+
+    .map-frame {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: saturate(0.7) hue-rotate(30deg) brightness(0.9);
+    }
+
+    .map-badge {
+      position: absolute;
+      bottom: 14px;
+      right: 14px;
+      background: var(--mlb-red);
+      border-radius: 50px;
+      padding: 7px 14px;
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(9px, 2.5vw, 11px);
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .map-badge:hover {
+      background: var(--mlb-red-bright);
+    }
+
+    /* RSVP */
+    .rsvp-intro {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(11px, 3vw, 13px);
+      font-weight: 300;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mlb-text-mid);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .btn-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #25d366, #1da851);
+      border: none;
+      border-radius: 50px;
+      padding: 15px 36px;
+      min-height: 52px;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(12px, 3.5vw, 15px);
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.2s var(--ease-spring), box-shadow 0.2s ease;
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.28);
+      touch-action: manipulation;
+    }
+
+    .btn-wa:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 26px rgba(37, 211, 102, 0.38);
+    }
+
+    .btn-wa:active {
+      transform: scale(0.97);
+    }
+
+    /* (Divisores Zona B ya definidos arriba) */
+
+    /* Gifts - Lluvia de Sobres */
+    .env-container {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .gifts-icon {
+      margin: 30px auto;
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(201, 161, 90, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gifts-text {
+      font-family: var(--ff-mlb-b);
+      font-size: clamp(12px, 3.5vw, 15px);
+      font-weight: 300;
+      line-height: 1.8;
+      letter-spacing: 1px;
+      color: var(--mlb-text-mid);
+      max-width: 440px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .env-particle {
+      position: absolute;
+      top: -40px;
+      width: 24px;
+      height: 16px;
+      background: transparent;
+      border: 1px solid rgba(201, 161, 90, 0.4);
+      border-radius: 2px;
+      pointer-events: none;
+      z-index: 1;
+      animation: fallEnvelope linear forwards;
+    }
+
+    .env-particle::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-top: 8px solid rgba(201, 161, 90, 0.4);
+    }
+
+    /* ═══════════════════════════════════════
+     CONFETTI
+  ═══════════════════════════════════════ */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 300;
+      opacity: 0;
+    }
+
+    /* ═══════════════════════════════════════
+     SCROLL REVEAL
+  ═══════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ═══════════════════════════════════════
+     KEYFRAMES GLOBALES
+  ═══════════════════════════════════════ */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fallEnvelope {
+      0% {
+        transform: translateY(-20px) rotate(-15deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(20deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes dotPulse {
+
+      0%,
+      100% {
+        opacity: .3;
+        transform: scale(.8);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════ */
+    @media (max-width: 360px) {
+
+      .flip-grid {
+        gap: 5px;
+      }
+
+      .pool-items-a {
+        grid-template-columns: 1fr;
+      }
+
+      .splash-name-a,
+      .splash-name-b {
+        font-size: clamp(28px, 9vw, 40px);
+      }
+
+      .tr-text-b {
+        font-size: clamp(28px, 10vw, 52px);
+      }
+    }
+
+    @media (min-width: 600px) {
+
+      .sec-a,
+      .sec-b {
+        max-width: 520px;
+      }
+
+      .orn-a,
+      .orn-b {
+        max-width: 520px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════════════
+     SPLASH
+══════════════════════════════════════ -->
+  <div id="splash-shell">
+    <div id="cover" onclick="openInvitation()" role="button" aria-label="Abrir invitacion">
+      <div id="watermark-names" aria-hidden="true">
+        <!-- Fila superior -->
+        <span class="wm-renata"
+          style="top:2%;  left:-4%;   font-size:clamp(36px,16vw,92px);  --wm-base-t:rotate(-10deg); animation-delay:0s;">Renata</span>
+        <span class="wm-ruben"
+          style="top:0%;  left:38%;   font-size:clamp(18px,8vw, 48px);  --wm-base-t:rotate(4deg);  animation-delay:-2s;">RUBÉN</span>
+        <span class="wm-ruben"
+          style="top:10%; right:-10%; font-size:clamp(26px,12vw,72px);  --wm-base-t:rotate(8deg);  animation-delay:-5s;">RUBÉN</span>
+
+        <!-- Zona media-alta -->
+        <span class="wm-renata"
+          style="top:22%; left:5%;    font-size:clamp(16px,7vw, 42px);  --wm-base-t:rotate(-4deg); animation-delay:-1s;">Renata</span>
+        <span class="wm-renata"
+          style="top:30%; right:-2%;  font-size:clamp(22px,10vw,58px);  --wm-base-t:rotate(5deg);  animation-delay:-7s;">Renata</span>
+        <span class="wm-ruben"
+          style="top:38%; left:-8%;   font-size:clamp(30px,13vw,78px);  --wm-base-t:rotate(-6deg); animation-delay:-3s;">RUBÉN</span>
+
+        <!-- Zona media -->
+        <span class="wm-renata"
+          style="top:50%; left:28%;   font-size:clamp(14px,6vw, 34px);  --wm-base-t:rotate(3deg);  animation-delay:-9s;">Renata</span>
+        <span class="wm-ruben"
+          style="top:56%; right:-5%;  font-size:clamp(20px,9vw, 54px);  --wm-base-t:rotate(7deg);  animation-delay:-4s;">RUBÉN</span>
+
+        <!-- Zona baja -->
+        <span class="wm-ruben"
+          style="top:65%; left:-6%;   font-size:clamp(28px,12vw,70px);  --wm-base-t:rotate(-7deg); animation-delay:-6s;">RUBÉN</span>
+        <span class="wm-renata"
+          style="top:72%; left:14%;   font-size:clamp(16px,7vw, 40px);  --wm-base-t:rotate(5deg);  animation-delay:-2.5s;">Renata</span>
+        <span class="wm-renata"
+          style="bottom:4%; right:-4%; font-size:clamp(24px,11vw,64px); --wm-base-t:rotate(-8deg); animation-delay:-8s;">Renata</span>
+        <span class="wm-ruben"
+          style="bottom:8%; left:32%;  font-size:clamp(14px,6vw, 36px);  --wm-base-t:rotate(3deg);  animation-delay:-1.5s;">RUBÉN</span>
+      </div>
+      <div id="envelope-wrapper">
+        <img src="img/1.png" id="cuerpo" alt="">
+        <div id="carta-wrap">
+          <img src="img/5.png" id="carta" alt="">
+        </div>
+        <div id="solapa-wrap">
+          <img src="img/3.png" id="solapa" alt="">
+        </div>
+        <img src="img/4.png" id="sello" alt="">
+      </div>
+      <div id="hint-wrap">
+        <p id="hint">Toca para abrir</p>
+        <div class="pulse-halo">
+          <div class="halo-core"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     REPRODUCTOR DE MUSICA
+══════════════════════════════════════ -->
+  <div id="music-bubble" role="region" aria-label="Reproductor de musica">
+    <button id="music-btn" class="zone-a" aria-label="Reproducir o pausar musica" touch-action="manipulation">
+      <!-- Icono ecualizador (playing) -->
+      <div class="eq-bars" aria-hidden="true">
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+      </div>
+      <!-- Icono play (paused) -->
+      <svg class="ico-music" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon points="5 3 19 12 5 21 5 3" fill="white" stroke="none" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     INVITACION
+══════════════════════════════════════ -->
+  <div id="invitation">
+
+    <!-- ════════════════════════
+       ZONA A — RENATA · COQUETTE
+  ════════════════════════ -->
+    <div id="zona-a">
+
+      <!-- Borde encaje superior -->
+      <div class="lace-top" aria-hidden="true">
+        <svg width="100%" height="24" viewBox="0 0 400 24" preserveAspectRatio="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M0 24 Q10 0 20 12 Q30 24 40 12 Q50 0 60 12 Q70 24 80 12 Q90 0 100 12 Q110 24 120 12 Q130 0 140 12 Q150 24 160 12 Q170 0 180 12 Q190 24 200 12 Q210 0 220 12 Q230 24 240 12 Q250 0 260 12 Q270 24 280 12 Q290 0 300 12 Q310 24 320 12 Q330 0 340 12 Q350 24 360 12 Q370 0 380 12 Q390 24 400 12 L400 24 Z"
+            fill="#fce8ef" />
+          <path
+            d="M0 24 Q10 0 20 12 Q30 24 40 12 Q50 0 60 12 Q70 24 80 12 Q90 0 100 12 Q110 24 120 12 Q130 0 140 12 Q150 24 160 12 Q170 0 180 12 Q190 24 200 12 Q210 0 220 12 Q230 24 240 12 Q250 0 260 12 Q270 24 280 12 Q290 0 300 12 Q310 24 320 12 Q330 0 340 12 Q350 24 360 12 Q370 0 380 12 Q390 24 400 12"
+            fill="none" stroke="#e8a0b4" stroke-width="1.5" />
+        </svg>
+      </div>
+
+      <!-- Hero A -->
+      <section id="hero-a" aria-label="Bienvenida de Renata">
+        <div id="petals-container" aria-hidden="true"></div>
+
+        <p class="a-eyebrow">Estas invitado a celebrar</p>
+
+        <!-- Lazo SVG premium -->
+        <div class="bow-wrap" aria-hidden="true">
+          <svg width="110" height="68" viewBox="0 0 110 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bowL" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fce4ec" />
+                <stop offset="55%" stop-color="#f2b8cb" />
+                <stop offset="100%" stop-color="#d4849e" />
+              </linearGradient>
+              <linearGradient id="bowR" x1="100%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#fce4ec" />
+                <stop offset="55%" stop-color="#f2b8cb" />
+                <stop offset="100%" stop-color="#d4849e" />
+              </linearGradient>
+              <linearGradient id="bowShine" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.7)" />
+                <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+              </linearGradient>
+              <filter id="bowShadow" x="-10%" y="-10%" width="120%" height="130%">
+                <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(180,100,130,0.25)" />
+              </filter>
+            </defs>
+            <!-- Sombra proyectada -->
+            <ellipse cx="55" cy="64" rx="28" ry="3.5" fill="rgba(180,100,130,0.18)" />
+            <!-- Cintas colgantes con curva -->
+            <path d="M50 36 Q46 50 40 63" stroke="#d4849e" stroke-width="2.2" stroke-linecap="round" fill="none"
+              opacity="0.85" />
+            <path d="M60 36 Q64 50 70 63" stroke="#d4849e" stroke-width="2.2" stroke-linecap="round" fill="none"
+              opacity="0.85" />
+            <!-- Corte V en cintas -->
+            <path d="M40 63 L38 60 L42 60 Z" fill="#c97a96" opacity="0.7" />
+            <path d="M70 63 L68 60 L72 60 Z" fill="#c97a96" opacity="0.7" />
+            <!-- Ala izquierda grande -->
+            <path d="M55 33 C50 22 34 13 20 17 C9 20 7 31 18 34 C30 37 46 34 55 33Z" fill="url(#bowL)" stroke="#d4849e"
+              stroke-width="1.2" filter="url(#bowShadow)" />
+            <!-- Lobulo inferior izquierda -->
+            <path d="M55 33 C50 38 36 40 24 37 C14 34 13 28 22 27 C34 26 48 30 55 33Z" fill="#f2b8cb" stroke="#d4849e"
+              stroke-width="0.8" opacity="0.7" />
+            <!-- Ala derecha grande -->
+            <path d="M55 33 C60 22 76 13 90 17 C101 20 103 31 92 34 C80 37 64 34 55 33Z" fill="url(#bowR)"
+              stroke="#d4849e" stroke-width="1.2" filter="url(#bowShadow)" />
+            <!-- Lobulo inferior derecha -->
+            <path d="M55 33 C60 38 74 40 86 37 C96 34 97 28 88 27 C76 26 62 30 55 33Z" fill="#f2b8cb" stroke="#d4849e"
+              stroke-width="0.8" opacity="0.7" />
+            <!-- Nudo central con volumen -->
+            <ellipse cx="55" cy="33" rx="8" ry="6" fill="#fce8ef" stroke="#d4849e" stroke-width="1.5" />
+            <ellipse cx="55" cy="33" rx="5" ry="3.5" fill="url(#bowShine)" />
+            <circle cx="55" cy="33" r="2" fill="#c97a96" opacity="0.6" />
+            <!-- Brillo en alas -->
+            <ellipse cx="28" cy="22" rx="6" ry="3" fill="rgba(255,255,255,0.55)" transform="rotate(-22 28 22)" />
+            <ellipse cx="82" cy="22" rx="6" ry="3" fill="rgba(255,255,255,0.55)" transform="rotate(22 82 22)" />
+          </svg>
+        </div>
+
+        <h1 class="hero-a-name">Renata</h1>
+        <p class="hero-a-age">celebra sus 13 años</p>
+
+        <!-- Cadena de perlas SVG -->
+        <div class="pearl-chain" aria-hidden="true">
+          <svg width="180" height="14" viewBox="0 0 180 14">
+            <defs>
+              <radialGradient id="pearl" cx="35%" cy="35%" r="55%">
+                <stop offset="0%" stop-color="#fff" />
+                <stop offset="60%" stop-color="#e8c4d0" />
+                <stop offset="100%" stop-color="#c49ab0" />
+              </radialGradient>
+            </defs>
+            <line x1="0" y1="7" x2="180" y2="7" stroke="rgba(232,160,180,0.4)" stroke-width="0.8" />
+            <circle cx="7" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="22" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="35" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="50" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="63" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="78" cy="7" r="3.5" fill="url(#pearl)" opacity=".85" />
+            <circle cx="90" cy="7" r="6" fill="url(#pearl)" />
+            <circle cx="102" cy="7" r="3.5" fill="url(#pearl)" opacity=".85" />
+            <circle cx="117" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="130" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="145" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="158" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="173" cy="7" r="5" fill="url(#pearl)" />
+          </svg>
+        </div>
+
+        <p class="hero-a-quote">Eres parte de los momentos<br>que nunca voy a olvidar</p>
+
+        <div class="scroll-hint-a" aria-label="Desliza hacia abajo">
+          <span>Desliza</span>
+          <div class="chevron-a" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- Ornamento -->
+      <div class="orn-a reveal" aria-hidden="true">
+        <div class="orn-line-a"></div>
+        <div class="orn-dot-a"></div>
+        <div class="orn-dot-a lg"></div>
+        <div class="orn-dot-a"></div>
+        <div class="orn-line-a r"></div>
+      </div>
+
+      <!-- Detalles del evento -->
+      <section class="sec-a reveal" aria-labelledby="sec-a-title">
+        <p class="sec-a-eyebrow">La celebracion</p>
+        <h2 class="sec-a-title" id="sec-a-title">Cuando nos vemos</h2>
+
+        <div class="event-card-a">
+          <div class="ev-row">
+            <div class="ev-icon-a" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2" />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
+              </svg>
+            </div>
+            <div>
+              <p class="ev-label">Fecha</p>
+              <p class="ev-value-a">Viernes, 24 de Julio de 2026</p>
+            </div>
+          </div>
+          <div class="ev-row">
+            <div class="ev-icon-a" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+            </div>
+            <div>
+              <p class="ev-label">Hora</p>
+              <p class="ev-value-a">4:00 PM &ndash; 10:00 PM</p>
+            </div>
+          </div>
+          <div class="ev-row">
+            <div class="ev-icon-a" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div>
+              <p class="ev-label">Lugar</p>
+              <p class="ev-value-a">Granja Las Flechas</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ornamento flor (divisor 1) -->
+      <div class="orn-a reveal" aria-hidden="true">
+        <div class="orn-line-a"></div>
+        <!-- Flor / rosa -->
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="3" fill="#e8a0b4" />
+          <ellipse cx="12" cy="6" rx="2" ry="3.5" fill="#f9d4de" opacity="0.85" />
+          <ellipse cx="12" cy="18" rx="2" ry="3.5" fill="#f9d4de" opacity="0.85" />
+          <ellipse cx="6" cy="12" rx="3.5" ry="2" fill="#f9d4de" opacity="0.85" />
+          <ellipse cx="18" cy="12" rx="3.5" ry="2" fill="#f9d4de" opacity="0.85" />
+          <ellipse cx="7.76" cy="7.76" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(45 7.76 7.76)" />
+          <ellipse cx="16.24" cy="16.24" rx="2" ry="3" fill="#e8a0b4" opacity="0.7"
+            transform="rotate(45 16.24 16.24)" />
+          <ellipse cx="16.24" cy="7.76" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(-45 16.24 7.76)" />
+          <ellipse cx="7.76" cy="16.24" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(-45 7.76 16.24)" />
+          <circle cx="12" cy="12" r="2" fill="#c97a96" />
+        </svg>
+        <div class="orn-line-a r"></div>
+      </div>
+
+      <!-- Mapa — estilo Coquette -->
+      <section class="sec-a reveal" aria-labelledby="map-title" style="text-align:center;">
+        <p class="sec-a-eyebrow">Como llegar</p>
+        <h2 class="sec-a-title" id="map-title">Ubicacion</h2>
+        <div class="map-wrap-a">
+          <iframe class="map-frame-a"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3500.184104779417!2d-106.02365822449732!3d28.684138875636613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjjCsDQxJzAyLjkiTiAxMDbCsDAxJzE1LjkiVw!5e0!3m2!1ses-419!2smx!4v1783276277874!5m2!1ses-419!2smx"
+            width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin" title="Ubicacion del evento"></iframe>
+        </div>
+        <!-- Badge fuera del mapa -->
+        <a href="https://maps.app.goo.gl/FsTSNAXmY4igdPX98" target="_blank" rel="noopener noreferrer"
+          class="map-badge-a" aria-label="Abrir Granja Las Flechas en Google Maps">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          Granja Las Flechas &mdash; Abrir en Maps
+        </a>
+      </section>
+
+      <!-- Ornamento mariposa (divisor 2) -->
+      <div class="orn-a reveal" aria-hidden="true">
+        <div class="orn-line-a"></div>
+        <!-- Mariposa / liston -->
+        <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 9 C10 4 3 2 1 5 C-1 8 2 12 7 11 C10 10 12 9 13 9Z" fill="#fce8ef" stroke="#e8a0b4"
+            stroke-width="0.8" />
+          <path d="M13 9 C16 4 23 2 25 5 C27 8 24 12 19 11 C16 10 14 9 13 9Z" fill="#fce8ef" stroke="#e8a0b4"
+            stroke-width="0.8" />
+          <path d="M13 9 C11 12 8 15 6 14 C4 13 5 10 9 10 C11 10 12 9 13 9Z" fill="#f9d4de" stroke="#c97a96"
+            stroke-width="0.7" opacity="0.85" />
+          <path d="M13 9 C15 12 18 15 20 14 C22 13 21 10 17 10 C15 10 14 9 13 9Z" fill="#f9d4de" stroke="#c97a96"
+            stroke-width="0.7" opacity="0.85" />
+          <circle cx="13" cy="9" r="1.5" fill="#c97a96" />
+          <line x1="13" y1="9" x2="11" y2="5" stroke="#c97a96" stroke-width="0.8" stroke-linecap="round" />
+          <line x1="13" y1="9" x2="15" y2="5" stroke="#c97a96" stroke-width="0.8" stroke-linecap="round" />
+        </svg>
+        <div class="orn-line-a r"></div>
+      </div>
+
+      <!-- Aviso alberca — UN SOLO AVISO, estilo Coquette -->
+      <section class="sec-a reveal" aria-labelledby="pool-title">
+        <p class="sec-a-eyebrow">Aviso importante</p>
+        <h2 class="sec-a-title" id="pool-title">Habra alberca</h2>
+
+        <div class="pool-card-a">
+          <div class="pool-header-a">
+            <div class="pool-icon-wrap" aria-hidden="true">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12c1.5 0 3-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1" />
+                <path d="M2 17c1.5 0 3-1 4.5-1s3 1 4.5 1 3-1 4.5-1 3 1 4.5 1" />
+                <path d="M8 7l3-3 3 3" />
+                <line x1="11" y1="4" x2="11" y2="12" />
+              </svg>
+            </div>
+            <p class="pool-title-a">No olvides traer</p>
+          </div>
+          <div class="pool-items-a">
+            <div class="pool-item-a">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Traje de bano
+            </div>
+            <div class="pool-item-a">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Toalla
+            </div>
+            <div class="pool-item-a">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Bloqueador solar
+            </div>
+            <div class="pool-item-a">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Ropa de cambio
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ornamento lazo final Zona A -->
+      <div class="orn-a reveal" style="padding-bottom: 20px;" aria-hidden="true">
+        <div class="orn-line-a"></div>
+        <!-- Lazo pequeño -->
+        <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 8 C10 5 5 3 3 5 C1 7 3 10 7 9 C9.5 8.5 11 8 12 8Z" fill="#fce8ef" stroke="#d4849e"
+            stroke-width="0.8" />
+          <path d="M12 8 C14 5 19 3 21 5 C23 7 21 10 17 9 C14.5 8.5 13 8 12 8Z" fill="#fce8ef" stroke="#d4849e"
+            stroke-width="0.8" />
+          <rect x="10" y="6" width="4" height="4" rx="1.5" fill="#fce8ef" stroke="#d4849e" stroke-width="1" />
+          <circle cx="12" cy="8" r="1" fill="#c97a96" />
+        </svg>
+        <div class="orn-line-a r"></div>
+      </div>
+    </div><!-- /zona-a -->
+
+    <!-- ════════════════════════
+       TRANSICION — THE PITCH
+  ════════════════════════ -->
+    <div id="transition-zone" aria-hidden="true">
+      <div class="tr-bg-a"></div>
+      <div class="tr-bg-b"></div>
+
+      <!-- Fracturas SVG mejoradas -->
+      <svg class="crack-svg" viewBox="0 0 375 700" preserveAspectRatio="xMidYMid slice"
+        xmlns="http://www.w3.org/2000/svg">
+        <!-- Grieta principal izquierda-arriba -->
+        <path d="M188 350 L162 298 L178 252 L148 198 L170 148 L155 96" stroke="rgba(255,255,255,0.8)" stroke-width="2.5"
+          fill="none" stroke-linecap="round" />
+        <!-- Ramas izquierda -->
+        <path d="M162 298 L132 285 L105 295" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"
+          stroke-linecap="round" />
+        <path d="M148 198 L120 188 L100 200" stroke="rgba(255,255,255,0.35)" stroke-width="1" fill="none"
+          stroke-linecap="round" />
+        <!-- Grieta principal derecha-arriba -->
+        <path d="M188 350 L218 290 L202 240 L234 186 L215 138" stroke="rgba(255,255,255,0.65)" stroke-width="2"
+          fill="none" stroke-linecap="round" />
+        <!-- Ramas derecha -->
+        <path d="M218 290 L248 278 L272 290" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"
+          stroke-linecap="round" />
+        <!-- Grieta principal abajo-izquierda -->
+        <path d="M188 350 L155 400 L138 460 L162 514" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" fill="none"
+          stroke-linecap="round" />
+        <!-- Grieta principal abajo-derecha -->
+        <path d="M188 350 L222 408 L244 468 L228 528" stroke="rgba(255,255,255,0.45)" stroke-width="1.5" fill="none"
+          stroke-linecap="round" />
+        <!-- Fragmento / polygono astillado -->
+        <polygon points="188,350 155,300 178,252 210,270" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.25)"
+          stroke-width="0.8" />
+        <polygon points="188,350 220,295 242,330 215,368" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.2)"
+          stroke-width="0.8" />
+        <polygon points="188,350 158,395 140,370 162,340" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)"
+          stroke-width="0.8" />
+        <!-- Halo de impacto -->
+        <circle cx="188" cy="350" r="28" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.5" />
+        <circle cx="188" cy="350" r="48" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+      </svg>
+
+      <div class="tr-center">
+        <p class="tr-text-a">y ahora...</p>
+
+        <!-- Pelota de beisbol autentica con costuras rojas -->
+        <div class="tr-baseball" aria-hidden="true">
+          <svg width="114" height="114" viewBox="0 0 114 114" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="ballGrad" cx="34%" cy="30%" r="62%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="40%" stop-color="#f5f0e6" />
+                <stop offset="100%" stop-color="#d9cbb4" />
+              </radialGradient>
+              <radialGradient id="ballRim" cx="50%" cy="50%" r="50%">
+                <stop offset="60%" stop-color="transparent" />
+                <stop offset="100%" stop-color="rgba(60,40,20,0.35)" />
+              </radialGradient>
+              <filter id="ballBlur" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="3.5" />
+              </filter>
+            </defs>
+            <!-- Sombra proyectada -->
+            <ellipse cx="59" cy="107" rx="30" ry="5.5" fill="rgba(0,0,0,0.28)" filter="url(#ballBlur)" />
+            <!-- Cuerpo -->
+            <circle cx="57" cy="57" r="47" fill="url(#ballGrad)" />
+            <circle cx="57" cy="57" r="47" fill="url(#ballRim)" />
+            <circle cx="57" cy="57" r="47" fill="none" stroke="rgba(100,75,40,0.15)" stroke-width="1.2" />
+            <!-- Costuras en S (izquierda) -->
+            <path d="M36 22 C28 30 26 44 30 57 C26 70 28 84 36 92" fill="none" stroke="#cc2200" stroke-width="2.2"
+              stroke-linecap="round" />
+            <!-- Marcas de hilo izquierda -->
+            <path d="M36 28 L31 25M36 33 L30 31M36 40 L30 39M36 47 L30 47M36 54 L30 54" stroke="#cc2200"
+              stroke-width="1.2" stroke-linecap="round" />
+            <path d="M36 60 L30 60M36 67 L30 67M36 74 L30 74M36 81 L30 82M36 87 L31 90" stroke="#cc2200"
+              stroke-width="1.2" stroke-linecap="round" />
+            <!-- Costuras en S (derecha) -->
+            <path d="M78 22 C86 30 88 44 84 57 C88 70 86 84 78 92" fill="none" stroke="#cc2200" stroke-width="2.2"
+              stroke-linecap="round" />
+            <!-- Marcas de hilo derecha -->
+            <path d="M78 28 L83 25M78 33 L84 31M78 40 L84 39M78 47 L84 47M78 54 L84 54" stroke="#cc2200"
+              stroke-width="1.2" stroke-linecap="round" />
+            <path d="M78 60 L84 60M78 67 L84 67M78 74 L84 74M78 81 L84 82M78 87 L83 90" stroke="#cc2200"
+              stroke-width="1.2" stroke-linecap="round" />
+            <!-- Brillo especular -->
+            <ellipse cx="40" cy="36" rx="11" ry="6.5" fill="rgba(255,255,255,0.6)" transform="rotate(-22 40 36)" />
+            <ellipse cx="33" cy="30" rx="4" ry="2.2" fill="rgba(255,255,255,0.85)" transform="rotate(-22 33 30)" />
+          </svg>
+        </div>
+
+        <p class="tr-text-b">RUBEN<br>A LA CANCHA</p>
+      </div>
+
+      <div id="tr-particles"></div>
+    </div><!-- /transition-zone -->
+
+    <!-- ════════════════════════
+       ZONA B — RUBEN · MLB
+  ════════════════════════ -->
+    <div id="zona-b">
+      <div class="stitch-top" aria-hidden="true"></div>
+
+      <!-- Hero B -->
+      <section id="hero-b" aria-label="Bienvenida de Ruben">
+        <div class="jersey-ghost" aria-hidden="true">20</div>
+
+        <p class="b-eyebrow">— En sus marcas —</p>
+
+        <!-- Bate de beisbol SVG -->
+        <div class="mlb-patch" aria-hidden="true">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="batWood" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#E1C699" />
+                <stop offset="25%" stop-color="#D4B07B" />
+                <stop offset="60%" stop-color="#E6D0A7" />
+                <stop offset="100%" stop-color="#C29B62" />
+              </linearGradient>
+              <linearGradient id="batShine" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="rgba(255,255,255,0.4)" />
+                <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+              </linearGradient>
+              <filter id="batShadow">
+                <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.5)" />
+              </filter>
+            </defs>
+            <!-- Cuerpo del bate rotado 45 grados (diagonal) -->
+            <g transform="rotate(-40 36 36)" filter="url(#batShadow)">
+              <!-- Knob (perilla de la base) -->
+              <ellipse cx="36" cy="6" rx="5.5" ry="3.5" fill="#5A3A22" />
+              <!-- Mango, taper y barril (path unificado) -->
+              <path
+                d="M 33.5 8 C 33.5 16 33.5 25 32 35 C 31 43 28.5 48 28.5 56 C 28.5 64 33 66 36 66 C 39 66 43.5 64 43.5 56 C 43.5 48 41 43 40 35 C 38.5 25 38.5 16 38.5 8 Z"
+                fill="url(#batWood)" />
+
+              <!-- Grip (cinta del mango) -->
+              <path d="M 33.5 9 L 38.5 9 L 38.5 24 C 38.5 24 36 24.5 33.5 24 Z" fill="#2B2B2B" opacity="0.9" />
+              <line x1="33.5" y1="12" x2="38.5" y2="11" stroke="#1A1A1A" stroke-width="1.5" />
+              <line x1="33.5" y1="15" x2="38.5" y2="14" stroke="#1A1A1A" stroke-width="1.5" />
+              <line x1="33.5" y1="18" x2="38.5" y2="17" stroke="#1A1A1A" stroke-width="1.5" />
+              <line x1="33.5" y1="21" x2="38.5" y2="20" stroke="#1A1A1A" stroke-width="1.5" />
+
+              <!-- Brillo principal -->
+              <path
+                d="M 34.5 9 C 34.5 16 34.5 25 33.5 35 C 32.5 43 31 48 31 56 C 31 60 32.5 63.5 36 64 C 34.5 58 35.5 40 36.5 25 C 37 18 37 9 37 9 Z"
+                fill="url(#batShine)" />
+
+              <!-- Marca/Logo en el barril -->
+              <ellipse cx="36" cy="42" rx="3.5" ry="7" fill="none" stroke="#8A6B44" stroke-width="1" opacity="0.6" />
+            </g>
+          </svg>
+        </div>
+
+        <h1 class="hero-b-name">RUBEN</h1>
+        <p class="hero-b-age">celebra sus 20 años</p>
+
+        <div class="stitch-div" aria-hidden="true">
+          <div class="st-line"></div>
+          <div class="st-dots">
+            <div class="st-dot"></div>
+            <div class="st-dot"></div>
+            <div class="st-dot"></div>
+          </div>
+          <div class="st-line"></div>
+        </div>
+
+        <p class="hero-b-text">Tu presencia hace que este partido<br>valga la pena</p>
+
+        <div class="scroll-hint-b" aria-label="Desliza hacia abajo">
+          <span>Sigue</span>
+          <div class="chevron-b" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- Ornamento B — Futbol Americano -->
+      <div class="orn-b reveal" aria-hidden="true">
+        <div class="orn-line-b"></div>
+        <!-- Futbol Americano mini -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="10" cy="10" rx="9" ry="5.5" fill="#a0522d" stroke="rgba(0,0,0,0.2)" stroke-width="0.8"
+            transform="rotate(-30 10 10)" />
+          <path d="M3.5 13 L6.5 8" stroke="#fff" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M13.5 12 L16.5 7" stroke="#fff" stroke-width="1.2" stroke-linecap="round" />
+          <line x1="6.5" y1="12.5" x2="13.5" y2="7.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round" />
+          <line x1="8" y1="9.5" x2="9.5" y2="11.5" stroke="#fff" stroke-width="1" />
+          <line x1="9.5" y1="8.5" x2="11" y2="10.5" stroke="#fff" stroke-width="1" />
+          <line x1="11" y1="7.5" x2="12.5" y2="9.5" stroke="#fff" stroke-width="1" />
+        </svg>
+        <div class="orn-line-b r"></div>
+      </div>
+
+      <!-- Gifts -->
+      <section class="sec-b reveal" id="gifts-sec" aria-labelledby="gifts-title"
+        style="overflow: hidden; text-align: center;">
+        <div class="env-container" id="env-container"></div>
+        <p class="sec-b-eyebrow">— Lluvia de Sobres —</p>
+        <h2 class="sec-b-title" id="gifts-title" style="margin-bottom:0;">MESA DE REGALOS</h2>
+
+        <div class="gifts-icon">
+          <svg width="28" height="20" viewBox="0 0 24 18" fill="none" stroke="#c9a15a" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="1" width="22" height="16" rx="2" />
+            <polyline points="1,1 12,10 23,1" />
+          </svg>
+        </div>
+
+        <p class="gifts-text">
+          Su presencia es nuestro mayor regalo.<br><br>
+          Sin embargo, si deseas tener un detalle adicional con nosotros, contaremos con lluvia de sobres.<br><br>
+          Agradecemos de todo corazón su cariño y generosidad.
+        </p>
+      </section>
+
+      <!-- Ornamento B — Voleibol -->
+      <div class="orn-b reveal" aria-hidden="true">
+        <div class="orn-line-b"></div>
+        <!-- Voleibol mini -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="9" fill="#fdf5e6" stroke="rgba(0,0,0,0.2)" stroke-width="0.8" />
+          <path d="M2.5 14 Q 10 19 17.5 14" stroke="#4a6085" stroke-width="1.2" fill="none" />
+          <path d="M2.5 6 Q 10 1 17.5 6" stroke="#4a6085" stroke-width="1.2" fill="none" />
+          <path d="M5 2 Q 1 10 5 18" stroke="#4a6085" stroke-width="1.2" fill="none" />
+          <path d="M15 2 Q 19 10 15 18" stroke="#4a6085" stroke-width="1.2" fill="none" />
+        </svg>
+        <div class="orn-line-b r"></div>
+      </div>
+
+      <!-- Faltan — marcador tipo scoreboard de volteo -->
+      <section class="sec-b reveal" aria-labelledby="faltan-title">
+        <p class="sec-b-eyebrow">— Cuenta regresiva —</p>
+        <h2 class="sec-b-title" id="faltan-title">FALTAN</h2>
+
+        <div class="flip-grid" aria-label="Cuenta regresiva">
+          <div class="flip-card" id="fc-d">
+            <div class="flip-inner">
+              <div class="flip-rivet l"></div>
+              <div class="flip-rivet r"></div>
+              <span class="flip-num" id="b-d">--</span>
+            </div>
+            <span class="flip-lbl">Dias</span>
+          </div>
+          <div class="flip-card" id="fc-h">
+            <div class="flip-inner">
+              <div class="flip-rivet l"></div>
+              <div class="flip-rivet r"></div>
+              <span class="flip-num" id="b-h">--</span>
+            </div>
+            <span class="flip-lbl">Horas</span>
+          </div>
+          <div class="flip-card" id="fc-m">
+            <div class="flip-inner">
+              <div class="flip-rivet l"></div>
+              <div class="flip-rivet r"></div>
+              <span class="flip-num" id="b-m">--</span>
+            </div>
+            <span class="flip-lbl">Mins</span>
+          </div>
+          <div class="flip-card" id="fc-s">
+            <div class="flip-inner">
+              <div class="flip-rivet l"></div>
+              <div class="flip-rivet r"></div>
+              <span class="flip-num" id="b-s">--</span>
+            </div>
+            <span class="flip-lbl">Segs</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Ornamento B — pelota de basquetbol -->
+      <div class="orn-b reveal" aria-hidden="true">
+        <div class="orn-line-b"></div>
+        <!-- Basquetbol mini -->
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="9" fill="#d9571a" stroke="rgba(0,0,0,0.2)" stroke-width="0.8" />
+          <!-- Lineas del balon -->
+          <path d="M1 10 L19 10" stroke="rgba(0,0,0,0.35)" stroke-width="0.9" />
+          <path d="M10 1 L10 19" stroke="rgba(0,0,0,0.35)" stroke-width="0.9" />
+          <path d="M2.2 4.5 C6 7 6 13 2.2 15.5" stroke="rgba(0,0,0,0.3)" stroke-width="0.8" fill="none"
+            stroke-linecap="round" />
+          <path d="M17.8 4.5 C14 7 14 13 17.8 15.5" stroke="rgba(0,0,0,0.3)" stroke-width="0.8" fill="none"
+            stroke-linecap="round" />
+          <ellipse cx="7" cy="5.5" rx="2.5" ry="1.5" fill="rgba(255,200,150,0.5)" transform="rotate(-15 7 5.5)" />
+        </svg>
+        <div class="orn-line-b r"></div>
+      </div>
+
+      <!-- RSVP -->
+      <section class="sec-b reveal" aria-labelledby="rsvp-title" style="text-align:center;">
+        <p class="sec-b-eyebrow">— Confirmacion —</p>
+        <h2 class="sec-b-title" id="rsvp-title">ASISTES?</h2>
+        <p class="rsvp-intro">Confirma tu asistencia por WhatsApp</p>
+        <a href="https://wa.me/521XXXXXXXXXX?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20fiesta%20de%20Renata%20y%20Ruben%20el%2024%20de%20julio"
+          target="_blank" rel="noopener noreferrer" class="btn-wa" aria-label="Confirmar asistencia por WhatsApp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          Confirmar asistencia
+        </a>
+      </section>
+
+
+
+    </div><!-- /zona-b -->
+
+  </div><!-- /invitation -->
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <audio id="audio-a" loop preload="auto" src="audio/espressomp3.mp3"></audio>
+  <audio id="audio-b" loop preload="auto" src="audio/We Are The Champions.mp3"></audio>
+
+  <script>
+    /* ═══════════════════════════════════════
+       UTILIDADES
+    ═══════════════════════════════════════ */
+    const $ = id => document.getElementById(id);
+    const qs = sel => document.querySelector(sel);
+
+    /* ═══════════════════════════════════════
+       SCROLL RESET — splash always visible on load
+    ═══════════════════════════════════════ */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    document.documentElement.style.overflow = 'hidden';
+
+    /* ═══════════════════════════════════════
+       VH FIX iOS
+    ═══════════════════════════════════════ */
+    (function setVH() {
+      document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+    })();
+    window.addEventListener('orientationchange', () => setTimeout(() => {
+      document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+    }, 350));
+
+    /* ═══════════════════════════════════════
+       SPLASH
+    ═══════════════════════════════════════ */
+    const splashShell = $('splash-shell');
+    const coverEl = qs('#splash-shell #cover');
+    const invitation = $('invitation');
+    const musicBubble = $('music-bubble');
+
+    function openInvitation() {
+      if (!coverEl || coverEl.classList.contains('is-opening')) return;
+
+      // Inicia animacion 3D del sobre (solapa, sello, carta)
+      coverEl.classList.add('is-opening');
+
+      // Esperar a que la animacion de la carta subiendo termine (aprox 2.2s)
+      setTimeout(() => {
+        coverEl.classList.add('leaving');
+        invitation.classList.add('visible');
+        musicBubble.classList.add('show');
+
+        setTimeout(() => {
+          splashShell.classList.add('gone');
+          // Restaurar scroll
+          document.documentElement.style.overflow = '';
+          initReveal();
+          updateCountdown();
+          setInterval(updateCountdown, 1000);
+          spawnPetals();
+          if (typeof isPlaying !== 'undefined' && !isPlaying) {
+            toggleMusic();
+          }
+        }, 750);
+      }, 2200);
+    }
+
+    /* ═══════════════════════════════════════
+       COUNTDOWN (Zona B split-flap autentico)
+    ═══════════════════════════════════════ */
+    const TARGET_DATE = new Date('2026-07-24T16:00:00');
+
+    function updateCountdown() {
+      const diff = TARGET_DATE - new Date();
+      const safe = diff > 0 ? diff : 0;
+      const d = Math.floor(safe / 86400000);
+      const h = Math.floor((safe % 86400000) / 3600000);
+      const m = Math.floor((safe % 3600000) / 60000);
+      const s = Math.floor((safe % 60000) / 1000);
+      const fmt = n => String(n).padStart(2, '0');
+
+      // Zona B — marcador split-flap (anima solo si el numero cambia)
+      flipSet('b-d', fmt(d));
+      flipSet('b-h', fmt(h));
+      flipSet('b-m', fmt(m));
+      flipSet('b-s', fmt(s));
+    }
+
+    /* === Split-Flap engine === */
+    const _flipPrev = {}; // guarda valor anterior por id
+
+    function flipSet(id, value) {
+      const numEl = $(id);
+      if (!numEl) return;
+      if (_flipPrev[id] === value) return; // sin cambio
+
+      const prev = _flipPrev[id] || value;
+      _flipPrev[id] = value;
+
+      const inner = numEl.closest('.flip-inner');
+      if (!inner) { numEl.textContent = value; return; }
+
+      // Clonar y lanzar la ficha que cae (top half con valor viejo)
+      const flapDown = document.createElement('div');
+      flapDown.className = 'flip-flap top';
+      flapDown.innerHTML = `<span class="flip-flap-num">${prev}</span>`;
+      inner.appendChild(flapDown);
+
+      // Actualizar el numero visible inmediatamente (se ve en la mitad inferior)
+      numEl.textContent = value;
+
+      // Animar caida
+      requestAnimationFrame(() => {
+        flapDown.classList.add('anim-down');
+        flapDown.addEventListener('animationend', () => {
+          flapDown.remove();
+        }, { once: true });
+      });
+    }
+
+    /* ═══════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════ */
+    function initReveal() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+        return;
+      }
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            obs.unobserve(e.target);
+            if (e.target.id === 'gifts-sec') {
+              spawnEnvelopes();
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    }
+
+    /* ═══════════════════════════════════════
+       PETALS — Zona A
+    ═══════════════════════════════════════ */
+    function spawnPetals() {
+      const container = $('petals-container');
+      if (!container) return;
+      const shapes = [
+        `<svg width="13" height="11" viewBox="0 0 13 11"><ellipse cx="6.5" cy="5.5" rx="5.5" ry="3.5" fill="#f9d4de" opacity="0.65"/></svg>`,
+        `<svg width="10" height="10" viewBox="0 0 10 10"><ellipse cx="5" cy="5" rx="4" ry="2.8" fill="#e8a0b4" opacity="0.55" transform="rotate(30 5 5)"/></svg>`,
+        `<svg width="9" height="9" viewBox="0 0 9 9"><ellipse cx="4.5" cy="4.5" rx="3.5" ry="2.5" fill="#c97a96" opacity="0.4"/></svg>`,
+        `<svg width="14" height="9" viewBox="0 0 14 9" opacity="0.5"><path d="M7 4.5C6 2 3 1 1.5 2.5 0 4 2 5 7 4.5 12 4 14 4 12.5 2.5 11 1 8 2 7 4.5Z" fill="#e8a0b4"/></svg>`,
+      ];
+      for (let i = 0; i < 14; i++) {
+        const el = document.createElement('div');
+        el.className = 'petal';
+        el.innerHTML = shapes[i % shapes.length];
+        el.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * -15}%;animation-duration:${7 + Math.random() * 9}s;animation-delay:${Math.random() * 8}s;`;
+        container.appendChild(el);
+      }
+    }
+
+    let envInterval;
+    function spawnEnvelopes() {
+      const sec = $('env-container');
+      if (!sec || envInterval) return;
+
+      envInterval = setInterval(() => {
+        const env = document.createElement('div');
+        env.className = 'env-particle';
+        env.style.left = (Math.random() * 90 + 5) + '%';
+        const duration = 3.5 + Math.random() * 3.5;
+        env.style.animationDuration = duration + 's';
+
+        // Tilt aleatorio inicial
+        env.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+
+        sec.appendChild(env);
+
+        setTimeout(() => {
+          if (env.parentNode === sec) env.remove();
+        }, duration * 1000);
+      }, 700);
+    }
+
+    /* ═══════════════════════════════════════
+       TRANSICION — bidireccional
+    ═══════════════════════════════════════ */
+    const transZone = $('transition-zone');
+    let trState = 'idle'; // 'idle' | 'forward' | 'backward'
+    let lastScrollY = 0;
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const scrollingDown = scrollY > lastScrollY;
+      lastScrollY = scrollY;
+
+      if (!transZone) return;
+      const rect = transZone.getBoundingClientRect();
+      const vH = window.innerHeight;
+
+      // Activar transicion (scroll hacia abajo)
+      if (scrollingDown && rect.top < vH * 0.45 && rect.bottom > 0 && trState !== 'forward') {
+        triggerForward();
+      }
+
+      // Revertir transicion (scroll hacia arriba) — permitir desde 'forward' o 'backward'
+      if (!scrollingDown && rect.top > vH * 0.35 && (trState === 'forward' || trState === 'backward')) {
+        triggerReverse();
+      }
+    }
+
+    function triggerForward() {
+      if (trState === 'forward') return;
+      trState = 'forward';
+      transZone.classList.remove('reset');
+
+      // La musica cambia cuando la pelota (ZONA B) irrumpe la pantalla
+      switchZone('b');
+
+      setTimeout(() => transZone.classList.add('cracking'), 80);
+      setTimeout(() => {
+        transZone.classList.add('activated');
+        spawnParticles();
+      }, 320);
+    }
+
+    function triggerReverse() {
+      if (trState === 'idle') return;
+      trState = 'backward';
+      transZone.classList.add('reset');
+      transZone.classList.remove('activated', 'cracking');
+
+      // La musica regresa cuando subimos a la ZONA A
+      switchZone('a');
+
+      setTimeout(() => {
+        transZone.classList.remove('reset');
+        trState = 'idle';
+      }, 800);
+    }
+
+    function spawnParticles() {
+      const c = $('tr-particles');
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+      const cls = ['#e8a0b4', '#f9d4de', '#d94a2b', '#f5f0e8', '#c4924a', '#fff'];
+      for (let i = 0; i < 22; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const sz = 4 + Math.random() * 9;
+        const a = (Math.PI * 2 * i) / 22;
+        const dist = 55 + Math.random() * 110;
+        p.style.cssText = `
+      left:${cx}px;top:${cy}px;
+      width:${sz}px;height:${sz}px;
+      background:${cls[Math.floor(Math.random() * cls.length)]};
+      --tx:${Math.cos(a) * dist}px;--ty:${Math.sin(a) * dist}px;
+      --d:${0.5 + Math.random() * 0.55}s;--dl:${Math.random() * 0.18}s;
+      transform:translate(-50%,-50%);
+    `;
+        c.appendChild(p);
+        setTimeout(() => p.remove(), 900);
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       DETECCION DE MUSICA BIDIRECCIONAL
+    ═══════════════════════════════════════ */
+    const zonaA = $('zona-a');
+    const zonaB = $('zona-b');
+
+    let currentZone = 'a';
+    let isPlaying = false;
+
+    const audioA = $('audio-a');
+    const audioB = $('audio-b');
+    const musicBtn = $('music-btn');
+
+    function switchZone(zone) {
+      if (currentZone === zone) return;
+      const was = currentZone;
+      currentZone = zone;
+
+      // Ripple en boton
+      const r = document.createElement('div');
+      r.className = 'zone-ripple';
+      r.style.background = zone === 'b' ? 'rgba(217,74,43,0.4)' : 'rgba(232,160,180,0.4)';
+      musicBtn.appendChild(r);
+      setTimeout(() => r.remove(), 600);
+
+      musicBtn.classList.remove('zone-a', 'zone-b');
+      musicBtn.classList.add('zone-' + zone);
+
+      if (isPlaying) {
+        // Fade-cross entre audios
+        const outAudio = zone === 'b' ? audioA : audioB;
+        const inAudio = zone === 'b' ? audioB : audioA;
+        fadeAudio(outAudio, 'out', () => {
+          outAudio.pause();
+        });
+        if (inAudio.src && inAudio.src !== window.location.href) {
+          fadeAudio(inAudio, 'in');
+          inAudio.play().catch(() => { });
+        }
+      }
+
+    }
+
+    function fadeAudio(audio, dir, cb) {
+      const steps = 15;
+      let step = 0;
+      const tick = setInterval(() => {
+        step++;
+        audio.volume = dir === 'out'
+          ? Math.max(0, 1 - step / steps)
+          : Math.min(1, step / steps);
+        if (step >= steps) { clearInterval(tick); if (cb) cb(); }
+      }, 20);
+    }
+
+    $('music-btn').addEventListener('click', toggleMusic, { passive: true });
+
+    function toggleMusic() {
+      if (isPlaying) {
+        const cur = currentZone === 'a' ? audioA : audioB;
+        cur.pause();
+        isPlaying = false;
+        musicBtn.classList.remove('playing');
+      } else {
+        const cur = currentZone === 'a' ? audioA : audioB;
+        cur.play().catch(() => { });
+        isPlaying = true;
+        musicBtn.classList.add('playing');
+      }
+    }
+
+    /* ═══════════════════════════════════════
+       CONFETTI — seccion de gracias
+    ═══════════════════════════════════════ */
+    const confCanvas = $('confetti-canvas');
+    const confCtx = confCanvas ? confCanvas.getContext('2d') : null;
+    let confRunning = false;
+
+    const thanksObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !confRunning) {
+          confRunning = true;
+          launchConfetti();
+        }
+      });
+    }, { threshold: 0.4 });
+
+    const thanksEl = qs('.thanks-section');
+    if (thanksEl) thanksObs.observe(thanksEl);
+
+    function launchConfetti() {
+      if (!confCanvas || !confCtx) return;
+      confCanvas.style.opacity = 1;
+      confCanvas.width = window.innerWidth;
+      confCanvas.height = window.innerHeight;
+
+      const colors = ['#e8a0b4', '#f9d4de', '#d94a2b', '#c4924a', '#f5f0e8', '#c97a96', '#1c1f24'];
+      const pieces = Array.from({ length: 70 }, () => ({
+        x: Math.random() * confCanvas.width,
+        y: Math.random() * -confCanvas.height,
+        sz: 5 + Math.random() * 7,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * Math.PI * 2,
+        rotS: (Math.random() - 0.5) * 0.08,
+        sx: (Math.random() - 0.5) * 2.5,
+        sy: 1.8 + Math.random() * 2.5,
+        shape: Math.random() > 0.45 ? 'rect' : 'circ',
+      }));
+
+      let frame = 0;
+      function animate() {
+        confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+        pieces.forEach(p => {
+          p.x += p.sx; p.y += p.sy; p.rot += p.rotS;
+          if (p.y > confCanvas.height) { p.y = -14; p.x = Math.random() * confCanvas.width; }
+          confCtx.save();
+          confCtx.translate(p.x, p.y);
+          confCtx.rotate(p.rot);
+          confCtx.fillStyle = p.color;
+          if (p.shape === 'rect') confCtx.fillRect(-p.sz / 2, -p.sz / 4, p.sz, p.sz / 2);
+          else { confCtx.beginPath(); confCtx.arc(0, 0, p.sz / 2, 0, Math.PI * 2); confCtx.fill(); }
+          confCtx.restore();
+        });
+        if (++frame < 280) requestAnimationFrame(animate);
+        else { confCanvas.style.opacity = 0; confRunning = false; }
+      }
+      requestAnimationFrame(animate);
+    }
+  </script>
+</body>
+
+</html>
