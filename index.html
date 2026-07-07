@@ -2957,8 +2957,7 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <audio id="audio-a" loop preload="auto" src="audio/espressomp3.mp3"></audio>
-  <audio id="audio-b" loop preload="auto" src="audio/We Are The Champions.mp3"></audio>
+  <audio id="audio-a" loop preload="auto" src="audio/eoo.mp3"></audio>
 
   <script>
     /* ═══════════════════════════════════════
@@ -3308,7 +3307,6 @@
     let isPlaying = false;
 
     const audioA = $('audio-a');
-    const audioB = $('audio-b');
     const musicBtn = $('music-btn');
 
     function switchZone(zone) {
@@ -3326,44 +3324,20 @@
       musicBtn.classList.remove('zone-a', 'zone-b');
       musicBtn.classList.add('zone-' + zone);
 
-      if (isPlaying) {
-        // Fade-cross entre audios
-        const outAudio = zone === 'b' ? audioA : audioB;
-        const inAudio = zone === 'b' ? audioB : audioA;
-        fadeAudio(outAudio, 'out', () => {
-          outAudio.pause();
-        });
-        if (inAudio.src && inAudio.src !== window.location.href) {
-          fadeAudio(inAudio, 'in');
-          inAudio.play().catch(() => { });
-        }
-      }
-
+      // Se mantiene el diseño de las burbujas cambiantes, pero reproducimos una sola canción sin cross-fade.
     }
 
-    function fadeAudio(audio, dir, cb) {
-      const steps = 15;
-      let step = 0;
-      const tick = setInterval(() => {
-        step++;
-        audio.volume = dir === 'out'
-          ? Math.max(0, 1 - step / steps)
-          : Math.min(1, step / steps);
-        if (step >= steps) { clearInterval(tick); if (cb) cb(); }
-      }, 20);
-    }
+
 
     $('music-btn').addEventListener('click', toggleMusic, { passive: true });
 
     function toggleMusic() {
       if (isPlaying) {
-        const cur = currentZone === 'a' ? audioA : audioB;
-        cur.pause();
+        audioA.pause();
         isPlaying = false;
         musicBtn.classList.remove('playing');
       } else {
-        const cur = currentZone === 'a' ? audioA : audioB;
-        cur.play().catch(() => { });
+        audioA.play().catch(() => { });
         isPlaying = true;
         musicBtn.classList.add('playing');
       }
