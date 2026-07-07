@@ -1073,21 +1073,83 @@
       transition: clip-path 0.7s var(--ease-expo);
     }
 
-    /* Fondo B (cancha verde) — entra con clip-path desde la derecha */
+    /* Fondo B (estadio nocturno premium) — entra con clip-path desde la derecha */
     .tr-bg-b {
       position: absolute;
       inset: 0;
+      /* Capas de fondo: cielo de estadio nocturno + campo iluminado */
       background:
-        repeating-linear-gradient(90deg,
-          rgba(255, 255, 255, 0.08) 0px, rgba(255, 255, 255, 0.08) 1px,
-          transparent 1px, transparent 60px),
-        repeating-linear-gradient(0deg,
-          rgba(255, 255, 255, 0.06) 0px, rgba(255, 255, 255, 0.06) 1px,
-          transparent 1px, transparent 60px),
-        linear-gradient(160deg, #1a5c28 0%, #1c6b2e 50%, #22703a 100%);
+        /* Foco izquierdo — luz cálida de estadio */
+        radial-gradient(ellipse 55% 40% at 12% 5%,
+          rgba(255, 220, 100, 0.18) 0%,
+          rgba(255, 200, 60, 0.08) 40%,
+          transparent 70%),
+        /* Foco derecho — luz cálida de estadio */
+        radial-gradient(ellipse 55% 40% at 88% 5%,
+          rgba(255, 220, 100, 0.18) 0%,
+          rgba(255, 200, 60, 0.08) 40%,
+          transparent 70%),
+        /* Resplandor central de campo */
+        radial-gradient(ellipse 80% 55% at 50% 100%,
+          rgba(34, 100, 52, 0.95) 0%,
+          rgba(20, 72, 36, 0.7) 45%,
+          transparent 75%),
+        /* Gradiente cielo nocturno → campo */
+        linear-gradient(180deg,
+          #060e18 0%,
+          #0a1828 20%,
+          #0d2235 38%,
+          #0e3022 55%,
+          #124a28 72%,
+          #1a6432 88%,
+          #1f7038 100%);
       clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
       transition: clip-path 0.9s var(--ease-expo);
       will-change: clip-path;
+      overflow: hidden;
+    }
+
+    /* Franjas de hierba — pseudo-elemento */
+    .tr-bg-b::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        /* Franjas de hierba alternas (efecto corte de césped) */
+        repeating-linear-gradient(180deg,
+          transparent 0px,
+          transparent 28px,
+          rgba(0, 0, 0, 0.08) 28px,
+          rgba(0, 0, 0, 0.08) 56px);
+      /* Solo visible en la zona inferior (campo) */
+      -webkit-mask-image: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.6) 62%, rgba(0, 0, 0, 0.9) 100%);
+      mask-image: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.6) 62%, rgba(0, 0, 0, 0.9) 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Estrellas en el cielo nocturno */
+    .tr-bg-b::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(1px 1px at 15% 8%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 28% 14%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 42% 6%, rgba(255, 255, 255, 0.6) 0%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 58% 11%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 72% 7%, rgba(255, 255, 255, 0.7) 0%, transparent 100%),
+        radial-gradient(1px 1px at 85% 15%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 8% 20%, rgba(255, 255, 255, 0.4) 0%, transparent 100%),
+        radial-gradient(1px 1px at 34% 22%, rgba(255, 255, 255, 0.5) 0%, transparent 100%),
+        radial-gradient(1px 1px at 63% 18%, rgba(255, 255, 255, 0.35) 0%, transparent 100%),
+        radial-gradient(1px 1px at 91% 23%, rgba(255, 255, 255, 0.45) 0%, transparent 100%),
+        radial-gradient(1px 1px at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 100%),
+        radial-gradient(1px 1px at 78% 28%, rgba(255, 255, 255, 0.35) 0%, transparent 100%);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 30%, transparent 52%);
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.8) 30%, transparent 52%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     #transition-zone.activated .tr-bg-b {
@@ -1215,7 +1277,7 @@
       opacity: 0;
       transition: opacity 0.5s ease 1.2s;
       position: absolute;
-      bottom: -80px;
+      bottom: -115px;
       white-space: nowrap;
     }
 
@@ -1224,6 +1286,42 @@
     }
 
     #transition-zone.reset .tr-text-b {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* SVGs decorativos del estadio — diamante y focos */
+    .tr-diamond-svg {
+      position: absolute;
+      bottom: -8%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(95vw, 480px);
+      height: auto;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.8s ease 0.5s;
+    }
+
+    .tr-lights-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.6s ease 0.3s;
+    }
+
+    #transition-zone.activated .tr-diamond-svg,
+    #transition-zone.activated .tr-lights-svg {
+      opacity: 1;
+    }
+
+    #transition-zone.reset .tr-diamond-svg,
+    #transition-zone.reset .tr-lights-svg {
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -1914,7 +2012,7 @@
 
     .gifts-text {
       font-family: var(--ff-mlb-b);
-      font-size: clamp(12px, 3.5vw, 15px);
+      font-size: clamp(14px, 4vw, 17px);
       font-weight: 300;
       line-height: 1.8;
       letter-spacing: 1px;
@@ -1959,6 +2057,12 @@
       pointer-events: none;
       z-index: 300;
       opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    /* Sube sobre el splash mientras dura el burst del sobre */
+    #confetti-canvas.splash-burst {
+      z-index: 600;
     }
 
     /* ═══════════════════════════════════════
@@ -2288,7 +2392,7 @@
           </svg>
         </div>
 
-        <p class="hero-a-quote">Eres parte de los momentos<br>que nunca voy a olvidar</p>
+        <p class="hero-a-quote">No sería una fiesta sin ti.<br>¡Ven a celebrar conmigo!</p>
 
         <div class="scroll-hint-a" aria-label="Desliza hacia abajo">
           <span>Desliza</span>
@@ -2489,7 +2593,67 @@
   ════════════════════════ -->
     <div id="transition-zone" aria-hidden="true">
       <div class="tr-bg-a"></div>
-      <div class="tr-bg-b"></div>
+      <div class="tr-bg-b">
+        <!-- Diamante de béisbol en perspectiva -->
+        <svg class="tr-diamond-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Líneas de cal del diamante en perspectiva -->
+          <g opacity="0.22" stroke="rgba(255,255,255,0.9)" fill="none" stroke-linecap="round">
+            <!-- Base path del diamante -->
+            <path d="M200 380 L50 240 L200 100 L350 240 Z" stroke-width="1.5" />
+            <!-- Línea del box del pitcher al home -->
+            <line x1="200" y1="380" x2="200" y2="240" stroke-width="1" stroke-dasharray="4,6" opacity="0.5" />
+            <!-- Línea de foul izquierda extendiéndose -->
+            <line x1="200" y1="380" x2="10" y2="180" stroke-width="1.2" opacity="0.7" />
+            <!-- Línea de foul derecha extendiéndose -->
+            <line x1="200" y1="380" x2="390" y2="180" stroke-width="1.2" opacity="0.7" />
+            <!-- Box del pitcher (círculo central) -->
+            <ellipse cx="200" cy="240" rx="18" ry="10" stroke-width="1.2" />
+            <!-- Home plate -->
+            <polygon points="200,376 191,367 191,358 209,358 209,367" stroke-width="1.5" fill="rgba(255,255,255,0.1)" />
+            <!-- Primera base -->
+            <rect x="343" y="233" width="14" height="14" rx="1" stroke-width="1.5" fill="rgba(255,255,255,0.08)" />
+            <!-- Segunda base -->
+            <rect x="193" y="93" width="14" height="14" rx="1" stroke-width="1.5" fill="rgba(255,255,255,0.08)" />
+            <!-- Tercera base -->
+            <rect x="43" y="233" width="14" height="14" rx="1" stroke-width="1.5" fill="rgba(255,255,255,0.08)" />
+          </g>
+          <!-- Arco del outfield -->
+          <path d="M10 180 Q200 -20 390 180" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" fill="none"
+            stroke-linecap="round" />
+        </svg>
+
+        <!-- Focos de estadio — columnas de luz -->
+        <svg class="tr-lights-svg" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Haz de luz izquierdo -->
+          <polygon points="30,0 55,0 200,600 0,600" fill="url(#lightL)" opacity="0.07" />
+          <!-- Haz de luz derecho -->
+          <polygon points="345,0 370,0 400,600 200,600" fill="url(#lightR)" opacity="0.07" />
+          <defs>
+            <linearGradient id="lightL" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffd860" stop-opacity="1" />
+              <stop offset="100%" stop-color="#ffd860" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="lightR" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffd860" stop-opacity="1" />
+              <stop offset="100%" stop-color="#ffd860" stop-opacity="0" />
+            </linearGradient>
+          </defs>
+          <!-- Punto de foco izquierdo -->
+          <circle cx="42" cy="4" r="6" fill="rgba(255,230,120,0.9)" filter="url(#glow)" />
+          <!-- Punto de foco derecho -->
+          <circle cx="358" cy="4" r="6" fill="rgba(255,230,120,0.9)" filter="url(#glow)" />
+          <defs>
+            <filter id="glow" x="-200%" y="-200%" width="500%" height="500%">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+          </defs>
+        </svg>
+      </div>
+
 
       <!-- Fracturas SVG mejoradas -->
       <svg class="crack-svg" viewBox="0 0 375 700" preserveAspectRatio="xMidYMid slice"
@@ -2574,7 +2738,7 @@
           </svg>
         </div>
 
-        <p class="tr-text-b">RUBEN<br>A LA CANCHA</p>
+        <p class="tr-text-b">RUBEN<br>AL TERRENO DE JUEGO!</p>
       </div>
 
       <div id="tr-particles"></div>
@@ -2650,7 +2814,7 @@
           <div class="st-line"></div>
         </div>
 
-        <p class="hero-b-text">Tu presencia hace que este partido<br>valga la pena</p>
+        <p class="hero-b-text">Se festeja mejor con equipo completo.<br>¡No faltes!</p>
 
         <div class="scroll-hint-b" aria-label="Desliza hacia abajo">
           <span>Sigue</span>
@@ -2834,6 +2998,9 @@
       // Inicia animacion 3D del sobre (solapa, sello, carta)
       coverEl.classList.add('is-opening');
 
+      // Confetti explota cuando la solapa termina de abrirse (~0.8s)
+      setTimeout(() => launchSplashConfetti(), 800);
+
       // Esperar a que la animacion de la carta subiendo termine (aprox 2.2s)
       setTimeout(() => {
         coverEl.classList.add('leaving');
@@ -2853,6 +3020,80 @@
           }
         }, 750);
       }, 2200);
+    }
+
+    function launchSplashConfetti() {
+      if (!confCanvas || !confCtx) return;
+      // Elevar sobre el splash-shell
+      confCanvas.classList.add('splash-burst');
+      confCanvas.style.opacity = 1;
+      confCanvas.width = window.innerWidth;
+      confCanvas.height = window.innerHeight;
+
+      // Colores del proyecto: rosa coquette + rojo/dorado MLB
+      const colors = ['#e8a0b4', '#fce8ef', '#c97a96', '#d94a2b', '#c9a96e', '#f9d4de', '#ffffff', '#f2632f', '#c9a15a'];
+      const cx = confCanvas.width / 2;
+      const cy = confCanvas.height * 0.42; // centro del sobre
+
+      const pieces = Array.from({ length: 140 }, () => {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 3 + Math.random() * 9;
+        return {
+          x: cx + (Math.random() - 0.5) * 60,
+          y: cy + (Math.random() - 0.5) * 30,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - 4, // impulso inicial hacia arriba
+          gravity: 0.18 + Math.random() * 0.12,
+          sz: 5 + Math.random() * 9,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rot: Math.random() * Math.PI * 2,
+          rotS: (Math.random() - 0.5) * 0.14,
+          alpha: 1,
+          shape: Math.random() > 0.4 ? 'rect' : 'circ',
+          ribbon: Math.random() > 0.7, // algunos son cintas largas
+        };
+      });
+
+      let frame = 0;
+      const totalFrames = 320;
+      function animateSplash() {
+        confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+        const progress = frame / totalFrames;
+        // Fade out en el último 30%
+        if (progress > 0.7) {
+          confCanvas.style.opacity = 1 - (progress - 0.7) / 0.3;
+        }
+        pieces.forEach(p => {
+          p.vx *= 0.985;
+          p.vy += p.gravity;
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.rotS;
+          if (p.y > confCanvas.height + 20) return;
+          confCtx.save();
+          confCtx.globalAlpha = Math.max(0, 1 - progress * 0.8);
+          confCtx.translate(p.x, p.y);
+          confCtx.rotate(p.rot);
+          confCtx.fillStyle = p.color;
+          if (p.ribbon) {
+            confCtx.fillRect(-p.sz * 0.3, -p.sz, p.sz * 0.6, p.sz * 2);
+          } else if (p.shape === 'rect') {
+            confCtx.fillRect(-p.sz / 2, -p.sz / 4, p.sz, p.sz / 2);
+          } else {
+            confCtx.beginPath();
+            confCtx.arc(0, 0, p.sz / 2, 0, Math.PI * 2);
+            confCtx.fill();
+          }
+          confCtx.restore();
+        });
+        if (++frame < totalFrames) {
+          requestAnimationFrame(animateSplash);
+        } else {
+          confCanvas.style.opacity = 0;
+          confCanvas.classList.remove('splash-burst');
+        }
+      }
+      requestAnimationFrame(animateSplash);
     }
 
     /* ═══════════════════════════════════════
