@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,300;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Bebas+Neue&family=Oswald:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Cormorant+Garamond:ital,wght@1,300;1,400&family=Bebas+Neue&family=Oswald:wght@300;400&family=Lato:wght@400;600&display=swap"
     rel="stylesheet">
 
   <style>
@@ -114,19 +114,8 @@
       cursor: pointer;
     }
 
-    html,
-    body,
-    #splash,
-    #invitation,
-    section,
-    div,
-    span,
-    p,
-    h1,
-    h2,
-    h3,
-    a,
-    button {
+    html {
+      /* Heredado por todos los descendientes: no hace falta repetirlo por selector */
       forced-color-adjust: none;
       -webkit-forced-color-adjust: none;
       color-scheme: light only;
@@ -152,8 +141,8 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100lvh;
       height: calc(var(--vh, 1vh) * 100);
+      height: 100lvh;
       z-index: 500;
       overflow: hidden;
       pointer-events: none;
@@ -226,30 +215,40 @@
 
     /* Animaciones de flotación rápida y "bouncy" (casual) */
     @keyframes wmFloat1 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(0px) scale(1);
       }
+
       50% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(-20px) scale(1.08);
       }
     }
 
     @keyframes wmFloat2 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(0px) scale(1);
       }
+
       50% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(20px) scale(1.08);
       }
     }
 
     @keyframes wmFloat3 {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px) scale(1);
       }
+
       33% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(-15px) translateX(12px) scale(1.05);
       }
+
       66% {
         transform: var(--wm-base-t, rotate(0deg)) translateY(15px) translateX(-12px) scale(1.08);
       }
@@ -265,12 +264,6 @@
 
     #watermark-names span:nth-child(3n) {
       animation: wmFloat3 6.5s ease-in-out infinite;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      #watermark-names span {
-        animation: none !important;
-      }
     }
 
     #cover.leaving {
@@ -809,8 +802,9 @@
       }
     }
 
-    /* ── Secciones Zona A ── */
-    .sec-a {
+    /* ── Secciones Universales ── */
+    .sec-a,
+    .sec-b {
       padding: clamp(32px, 6vw, 56px) clamp(16px, 4vw, 24px);
       max-width: 600px;
       margin: 0 auto;
@@ -1070,6 +1064,11 @@
       background: linear-gradient(160deg, var(--cq-cream) 0%, var(--cq-blush) 55%, var(--cq-rose) 100%);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       transition: clip-path 0.9s var(--ease-expo);
+    }
+
+    /* will-change solo mientras la transición está realmente activa (no permanente) */
+    #transition-zone.activated .tr-bg-a,
+    #transition-zone.reset .tr-bg-a {
       will-change: clip-path;
     }
 
@@ -1114,8 +1113,12 @@
           #1f7038 100%);
       clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
       transition: clip-path 0.9s var(--ease-expo);
-      will-change: clip-path;
       overflow: hidden;
+    }
+
+    #transition-zone.activated .tr-bg-b,
+    #transition-zone.reset .tr-bg-b {
+      will-change: clip-path;
     }
 
     /* Franjas de hierba — pseudo-elemento */
@@ -1576,14 +1579,7 @@
       opacity: 0.5;
     }
 
-    /* ── Secciones Zona B ── */
-    .sec-b {
-      padding: clamp(32px, 6vw, 56px) clamp(16px, 4vw, 24px);
-      max-width: 600px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
+    /* ── Secciones Zona B (estructura unificada arriba) ── */
 
     .sec-b-eyebrow {
       font-family: var(--ff-mlb-b);
@@ -1801,92 +1797,6 @@
       color: var(--mlb-red-bright);
     }
 
-    /* Diamante de béisbol decorativo */
-    .diamond-deco {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 24px;
-    }
-
-    /* Tarjeta scoreboard Zona B */
-    .scoreboard-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-
-    .scoreboard-header {
-      background: var(--mlb-red);
-      padding: 8px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .scoreboard-header span {
-      font-family: var(--ff-mlb-h);
-      font-size: clamp(13px, 3.5vw, 16px);
-      letter-spacing: 3px;
-      color: #fff;
-    }
-
-    .scoreboard-body {
-      padding: 6px 0;
-    }
-
-    .sc-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 13px clamp(16px, 4vw, 22px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .sc-row:last-child {
-      border-bottom: none;
-    }
-
-    .sc-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 8px;
-      background: rgba(217, 74, 43, 0.15);
-      border: 1px solid rgba(217, 74, 43, 0.28);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .sc-label {
-      font-family: var(--ff-mlb-b);
-      font-size: clamp(8px, 2.2vw, 9px);
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--mlb-red-bright);
-      margin-bottom: 3px;
-    }
-
-    .sc-value {
-      font-family: var(--ff-mlb-b);
-      font-size: clamp(15px, 4vw, 18px);
-      font-weight: 400;
-      letter-spacing: 1px;
-      color: var(--mlb-text);
-      line-height: 1.35;
-    }
-
-    a.sc-value {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    a.sc-value:hover {
-      color: var(--mlb-leather);
-    }
-
     /* Divisores Zona B — centrados y consistentes */
     .orn-b {
       display: flex;
@@ -1910,15 +1820,6 @@
 
     .orn-line-b.r {
       background: linear-gradient(90deg, rgba(255, 255, 255, 0.35), transparent);
-    }
-
-    .orn-dot-b {
-      width: 5px;
-      height: 5px;
-      background: rgba(255, 255, 255, 0.5);
-      border-radius: 50%;
-      opacity: 0.6;
-      flex-shrink: 0;
     }
 
     /* Mapa Zona B */
@@ -2206,11 +2107,6 @@
         grid-template-columns: 1fr;
       }
 
-      .splash-name-a,
-      .splash-name-b {
-        font-size: clamp(28px, 9vw, 40px);
-      }
-
       .tr-text-b {
         font-size: clamp(24px, 8vw, 42px);
       }
@@ -2219,10 +2115,7 @@
     @media (min-width: 600px) {
 
       .sec-a,
-      .sec-b {
-        max-width: 680px;
-      }
-
+      .sec-b,
       .orn-a,
       .orn-b {
         max-width: 680px;
@@ -2247,7 +2140,7 @@
      SPLASH
 ══════════════════════════════════════ -->
   <div id="splash-shell">
-    <div id="cover" onclick="openInvitation()" role="button" aria-label="Abrir invitación">
+    <div id="cover" role="button" aria-label="Abrir invitación">
       <div id="watermark-names" aria-hidden="true">
         <!-- Fila superior -->
         <span class="wm-renata"
@@ -2282,14 +2175,14 @@
           style="bottom:8%; left:32%;  font-size:clamp(14px,6vw, 36px);  --wm-base-t:rotate(3deg);  animation-delay:-1.5s;">RUBÉN</span>
       </div>
       <div id="envelope-wrapper">
-        <img src="img/1.png" id="cuerpo" alt="">
+        <img src="img/1.png" id="cuerpo" alt="" fetchpriority="high">
         <div id="carta-wrap">
-          <img src="img/5.png" id="carta" alt="">
+          <img src="img/5.png" id="carta" alt="" fetchpriority="high">
         </div>
         <div id="solapa-wrap">
-          <img src="img/3.png" id="solapa" alt="">
+          <img src="img/3.png" id="solapa" alt="" fetchpriority="high">
         </div>
-        <img src="img/4.png" id="sello" alt="">
+        <img src="img/4.png" id="sello" alt="" fetchpriority="high">
       </div>
       <div id="hint-wrap">
         <p id="hint">Toca para abrir</p>
@@ -2923,7 +2816,7 @@
         <h2 class="sec-b-title" id="faltan-title">FALTAN</h2>
 
         <div class="flip-grid" aria-label="Cuenta regresiva">
-          <div class="flip-card" id="fc-d">
+          <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-rivet l"></div>
               <div class="flip-rivet r"></div>
@@ -2931,7 +2824,7 @@
             </div>
             <span class="flip-lbl">Días</span>
           </div>
-          <div class="flip-card" id="fc-h">
+          <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-rivet l"></div>
               <div class="flip-rivet r"></div>
@@ -2939,7 +2832,7 @@
             </div>
             <span class="flip-lbl">Horas</span>
           </div>
-          <div class="flip-card" id="fc-m">
+          <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-rivet l"></div>
               <div class="flip-rivet r"></div>
@@ -2947,7 +2840,7 @@
             </div>
             <span class="flip-lbl">Mins</span>
           </div>
-          <div class="flip-card" id="fc-s">
+          <div class="flip-card">
             <div class="flip-inner">
               <div class="flip-rivet l"></div>
               <div class="flip-rivet r"></div>
@@ -3002,331 +2895,358 @@
   <audio id="audio-a" loop preload="auto" src="audio/eoo.mp3"></audio>
 
   <script>
-    /* ═══════════════════════════════════════
-       UTILIDADES
-    ═══════════════════════════════════════ */
-    const $ = id => document.getElementById(id);
-    const qs = sel => document.querySelector(sel);
+    (function () {
+      /* ═══════════════════════════════════════
+         STATE & CACHE
+      ═══════════════════════════════════════ */
+      let winW = window.innerWidth;
+      let winH = window.innerHeight;
 
-    /* ═══════════════════════════════════════
-       SCROLL RESET — splash always visible on load
-    ═══════════════════════════════════════ */
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
-    document.documentElement.style.overflow = 'hidden';
+      function updateDims() {
+        winW = window.innerWidth;
+        winH = window.innerHeight;
+        document.documentElement.style.setProperty('--vh', winH * 0.01 + 'px');
+      }
+      window.addEventListener('resize', updateDims, { passive: true });
+      window.addEventListener('orientationchange', () => setTimeout(updateDims, 350));
+      updateDims();
 
-    /* ═══════════════════════════════════════
-       VH FIX iOS
-    ═══════════════════════════════════════ */
-    (function setVH() {
-      document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
-    })();
-    window.addEventListener('orientationchange', () => setTimeout(() => {
-      document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
-    }, 350));
+      /* ═══════════════════════════════════════
+         UTILIDADES
+      ═══════════════════════════════════════ */
+      const $ = id => document.getElementById(id);
+      const qs = sel => document.querySelector(sel);
+      const confCanvas = $('confetti-canvas');
+      const confCtx = confCanvas ? confCanvas.getContext('2d') : null;
 
-    /* ═══════════════════════════════════════
-       SPLASH
-    ═══════════════════════════════════════ */
-    const splashShell = $('splash-shell');
-    const coverEl = qs('#splash-shell #cover');
-    const invitation = $('invitation');
-    const musicBubble = $('music-bubble');
+      /* ═══════════════════════════════════════
+         SCROLL RESET
+      ═══════════════════════════════════════ */
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      window.scrollTo(0, 0);
+      document.documentElement.style.overflow = 'hidden';
 
-    function openInvitation() {
-      if (!coverEl || coverEl.classList.contains('is-opening')) return;
+      /* ═══════════════════════════════════════
+         SPLASH
+      ═══════════════════════════════════════ */
+      const splashShell = $('splash-shell');
+      const coverEl = qs('#splash-shell #cover');
+      const invitation = $('invitation');
+      const musicBubble = $('music-bubble');
 
-      // Inicia animacion 3D del sobre (solapa, sello, carta)
-      coverEl.classList.add('is-opening');
+      if (coverEl) coverEl.addEventListener('click', openInvitation);
 
-      // Confetti explota cuando la solapa termina de abrirse (~0.8s)
-      setTimeout(() => launchSplashConfetti(), 800);
+      function openInvitation() {
+        if (!coverEl || coverEl.classList.contains('is-opening')) return;
 
-      // Esperar a que la animacion de la carta subiendo termine (aprox 2.2s)
-      setTimeout(() => {
-        coverEl.classList.add('leaving');
-        invitation.classList.add('visible');
-        musicBubble.classList.add('show');
+        // Inicia animacion 3D del sobre (solapa, sello, carta)
+        coverEl.classList.add('is-opening');
 
+        // Confetti explota cuando la solapa termina de abrirse (~0.8s)
+        setTimeout(() => launchSplashConfetti(), 800);
+
+        // Esperar a que la animacion de la carta subiendo termine (aprox 2.2s)
         setTimeout(() => {
-          splashShell.classList.add('gone');
-          // Restaurar scroll
-          document.documentElement.style.overflow = '';
-          initReveal();
-          updateCountdown();
-          setInterval(updateCountdown, 1000);
-          spawnPetals();
-          if (typeof isPlaying !== 'undefined' && !isPlaying) {
-            toggleMusic();
-          }
-        }, 750);
-      }, 2200);
-    }
+          coverEl.classList.add('leaving');
+          invitation.classList.add('visible');
+          musicBubble.classList.add('show');
 
-    function launchSplashConfetti() {
-      if (!confCanvas || !confCtx) return;
-      // Elevar sobre el splash-shell
-      confCanvas.classList.add('splash-burst');
-      confCanvas.style.opacity = 1;
-      confCanvas.width = window.innerWidth;
-      confCanvas.height = window.innerHeight;
-
-      // Colores del proyecto: rosa coquette + rojo/dorado MLB
-      const colors = ['#e8a0b4', '#fce8ef', '#c97a96', '#d94a2b', '#c9a96e', '#f9d4de', '#ffffff', '#f2632f', '#c9a15a'];
-      const cx = confCanvas.width / 2;
-      const cy = confCanvas.height * 0.42; // centro del sobre
-
-      const pieces = Array.from({ length: 140 }, () => {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = 3 + Math.random() * 9;
-        return {
-          x: cx + (Math.random() - 0.5) * 60,
-          y: cy + (Math.random() - 0.5) * 30,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed - 4, // impulso inicial hacia arriba
-          gravity: 0.18 + Math.random() * 0.12,
-          sz: 5 + Math.random() * 9,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          rot: Math.random() * Math.PI * 2,
-          rotS: (Math.random() - 0.5) * 0.14,
-          alpha: 1,
-          shape: Math.random() > 0.4 ? 'rect' : 'circ',
-          ribbon: Math.random() > 0.7, // algunos son cintas largas
-        };
-      });
-
-      let frame = 0;
-      const totalFrames = 320;
-      function animateSplash() {
-        confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
-        const progress = frame / totalFrames;
-        // Fade out en el último 30%
-        if (progress > 0.7) {
-          confCanvas.style.opacity = 1 - (progress - 0.7) / 0.3;
-        }
-        pieces.forEach(p => {
-          p.vx *= 0.985;
-          p.vy += p.gravity;
-          p.x += p.vx;
-          p.y += p.vy;
-          p.rot += p.rotS;
-          if (p.y > confCanvas.height + 20) return;
-          confCtx.save();
-          confCtx.globalAlpha = Math.max(0, 1 - progress * 0.8);
-          confCtx.translate(p.x, p.y);
-          confCtx.rotate(p.rot);
-          confCtx.fillStyle = p.color;
-          if (p.ribbon) {
-            confCtx.fillRect(-p.sz * 0.3, -p.sz, p.sz * 0.6, p.sz * 2);
-          } else if (p.shape === 'rect') {
-            confCtx.fillRect(-p.sz / 2, -p.sz / 4, p.sz, p.sz / 2);
-          } else {
-            confCtx.beginPath();
-            confCtx.arc(0, 0, p.sz / 2, 0, Math.PI * 2);
-            confCtx.fill();
-          }
-          confCtx.restore();
-        });
-        if (++frame < totalFrames) {
-          requestAnimationFrame(animateSplash);
-        } else {
-          confCanvas.style.opacity = 0;
-          confCanvas.classList.remove('splash-burst');
-        }
-      }
-      requestAnimationFrame(animateSplash);
-    }
-
-    /* ═══════════════════════════════════════
-       COUNTDOWN (Zona B split-flap autentico)
-    ═══════════════════════════════════════ */
-    const TARGET_DATE = new Date('2026-07-24T16:00:00');
-
-    function updateCountdown() {
-      const diff = TARGET_DATE - new Date();
-      const safe = diff > 0 ? diff : 0;
-      const d = Math.floor(safe / 86400000);
-      const h = Math.floor((safe % 86400000) / 3600000);
-      const m = Math.floor((safe % 3600000) / 60000);
-      const s = Math.floor((safe % 60000) / 1000);
-      const fmt = n => String(n).padStart(2, '0');
-
-      // Zona B — marcador split-flap (anima solo si el numero cambia)
-      flipSet('b-d', fmt(d));
-      flipSet('b-h', fmt(h));
-      flipSet('b-m', fmt(m));
-      flipSet('b-s', fmt(s));
-    }
-
-    /* === Split-Flap engine === */
-    const _flipPrev = {}; // guarda valor anterior por id
-
-    function flipSet(id, value) {
-      const numEl = $(id);
-      if (!numEl) return;
-      if (_flipPrev[id] === value) return; // sin cambio
-
-      const prev = _flipPrev[id] || value;
-      _flipPrev[id] = value;
-
-      const inner = numEl.closest('.flip-inner');
-      if (!inner) { numEl.textContent = value; return; }
-
-      // Clonar y lanzar la ficha que cae (top half con valor viejo)
-      const flapDown = document.createElement('div');
-      flapDown.className = 'flip-flap top';
-      flapDown.innerHTML = `<span class="flip-flap-num">${prev}</span>`;
-      inner.appendChild(flapDown);
-
-      // Actualizar el numero visible inmediatamente (se ve en la mitad inferior)
-      numEl.textContent = value;
-
-      // Animar caida
-      requestAnimationFrame(() => {
-        flapDown.classList.add('anim-down');
-        flapDown.addEventListener('animationend', () => {
-          flapDown.remove();
-        }, { once: true });
-      });
-    }
-
-    /* ═══════════════════════════════════════
-       SCROLL REVEAL
-    ═══════════════════════════════════════ */
-    function initReveal() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
-        return;
-      }
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('in');
-            obs.unobserve(e.target);
-            if (e.target.id === 'gifts-sec') {
-              spawnEnvelopes();
+          setTimeout(() => {
+            splashShell.classList.add('gone');
+            // Restaurar scroll
+            document.documentElement.style.overflow = '';
+            initReveal();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            spawnPetals();
+            initEnvelopeSpawner();
+            if (typeof isPlaying !== 'undefined' && !isPlaying) {
+              toggleMusic();
             }
-          }
-        });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    }
-
-    /* ═══════════════════════════════════════
-       PETALS — Zona A
-    ═══════════════════════════════════════ */
-    function spawnPetals() {
-      const container = $('petals-container');
-      if (!container) return;
-      const shapes = [
-        `<svg width="13" height="11" viewBox="0 0 13 11"><ellipse cx="6.5" cy="5.5" rx="5.5" ry="3.5" fill="#f9d4de" opacity="0.65"/></svg>`,
-        `<svg width="10" height="10" viewBox="0 0 10 10"><ellipse cx="5" cy="5" rx="4" ry="2.8" fill="#e8a0b4" opacity="0.55" transform="rotate(30 5 5)"/></svg>`,
-        `<svg width="9" height="9" viewBox="0 0 9 9"><ellipse cx="4.5" cy="4.5" rx="3.5" ry="2.5" fill="#c97a96" opacity="0.4"/></svg>`,
-        `<svg width="14" height="9" viewBox="0 0 14 9" opacity="0.5"><path d="M7 4.5C6 2 3 1 1.5 2.5 0 4 2 5 7 4.5 12 4 14 4 12.5 2.5 11 1 8 2 7 4.5Z" fill="#e8a0b4"/></svg>`,
-      ];
-      for (let i = 0; i < 14; i++) {
-        const el = document.createElement('div');
-        el.className = 'petal';
-        el.innerHTML = shapes[i % shapes.length];
-        el.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * -15}%;animation-duration:${7 + Math.random() * 9}s;animation-delay:${Math.random() * 8}s;`;
-        container.appendChild(el);
+          }, 750);
+        }, 2200);
       }
-    }
 
-    let envInterval;
-    function spawnEnvelopes() {
-      const sec = $('env-container');
-      if (!sec || envInterval) return;
+      function launchSplashConfetti() {
+        if (!confCanvas || !confCtx) return;
+        // Elevar sobre el splash-shell
+        confCanvas.classList.add('splash-burst');
+        confCanvas.style.opacity = 1;
+        confCanvas.width = winW;
+        confCanvas.height = winH;
 
-      envInterval = setInterval(() => {
-        const env = document.createElement('div');
-        env.className = 'env-particle';
-        env.style.left = (Math.random() * 90 + 5) + '%';
-        const duration = 3.5 + Math.random() * 3.5;
-        env.style.animationDuration = duration + 's';
+        // Colores del proyecto: rosa coquette + rojo/dorado MLB
+        const colors = ['#e8a0b4', '#fce8ef', '#c97a96', '#d94a2b', '#c9a96e', '#f9d4de', '#ffffff', '#f2632f', '#c9a15a'];
+        const cx = confCanvas.width / 2;
+        const cy = confCanvas.height * 0.42; // centro del sobre
 
-        // Tilt aleatorio inicial
-        env.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+        const pieces = Array.from({ length: 140 }, () => {
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 3 + Math.random() * 9;
+          return {
+            x: cx + (Math.random() - 0.5) * 60,
+            y: cy + (Math.random() - 0.5) * 30,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 4, // impulso inicial hacia arriba
+            gravity: 0.18 + Math.random() * 0.12,
+            sz: 5 + Math.random() * 9,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rot: Math.random() * Math.PI * 2,
+            rotS: (Math.random() - 0.5) * 0.14,
+            alpha: 1,
+            shape: Math.random() > 0.4 ? 'rect' : 'circ',
+            ribbon: Math.random() > 0.7, // algunos son cintas largas
+          };
+        });
 
-        sec.appendChild(env);
+        let frame = 0;
+        const totalFrames = 320;
+        function animateSplash() {
+          confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
+          const progress = frame / totalFrames;
+          // Fade out en el último 30%
+          if (progress > 0.7) {
+            confCanvas.style.opacity = 1 - (progress - 0.7) / 0.3;
+          }
+          pieces.forEach(p => {
+            p.vx *= 0.985;
+            p.vy += p.gravity;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.rot += p.rotS;
+            if (p.y > confCanvas.height + 20) return;
+            confCtx.save();
+            confCtx.globalAlpha = Math.max(0, 1 - progress * 0.8);
+            confCtx.translate(p.x, p.y);
+            confCtx.rotate(p.rot);
+            confCtx.fillStyle = p.color;
+            if (p.ribbon) {
+              confCtx.fillRect(-p.sz * 0.3, -p.sz, p.sz * 0.6, p.sz * 2);
+            } else if (p.shape === 'rect') {
+              confCtx.fillRect(-p.sz / 2, -p.sz / 4, p.sz, p.sz / 2);
+            } else {
+              confCtx.beginPath();
+              confCtx.arc(0, 0, p.sz / 2, 0, Math.PI * 2);
+              confCtx.fill();
+            }
+            confCtx.restore();
+          });
+          if (++frame < totalFrames) {
+            requestAnimationFrame(animateSplash);
+          } else {
+            confCanvas.style.opacity = 0;
+            confCanvas.classList.remove('splash-burst');
+          }
+        }
+        requestAnimationFrame(animateSplash);
+      }
+
+      /* ═══════════════════════════════════════
+         COUNTDOWN (Zona B split-flap autentico)
+      ═══════════════════════════════════════ */
+      const TARGET_DATE = new Date('2026-07-24T16:00:00-06:00'); // hora de Chihuahua, MX
+
+      function updateCountdown() {
+        const diff = TARGET_DATE - new Date();
+        const safe = diff > 0 ? diff : 0;
+        const d = Math.floor(safe / 86400000);
+        const h = Math.floor((safe % 86400000) / 3600000);
+        const m = Math.floor((safe % 3600000) / 60000);
+        const s = Math.floor((safe % 60000) / 1000);
+        const fmt = n => String(n).padStart(2, '0');
+
+        // Zona B — marcador split-flap (anima solo si el numero cambia)
+        flipSet('b-d', fmt(d));
+        flipSet('b-h', fmt(h));
+        flipSet('b-m', fmt(m));
+        flipSet('b-s', fmt(s));
+      }
+
+      /* === Split-Flap engine === */
+      const _flipPrev = {}; // guarda valor anterior por id
+
+      function flipSet(id, value) {
+        const numEl = $(id);
+        if (!numEl) return;
+        if (_flipPrev[id] === value) return; // sin cambio
+
+        const prev = _flipPrev[id] || value;
+        _flipPrev[id] = value;
+
+        const inner = numEl.closest('.flip-inner');
+        if (!inner) { numEl.textContent = value; return; }
+
+        // Clonar y lanzar la ficha que cae (top half con valor viejo)
+        const flapDown = document.createElement('div');
+        flapDown.className = 'flip-flap top';
+        flapDown.innerHTML = `<span class="flip-flap-num">${prev}</span>`;
+        inner.appendChild(flapDown);
+
+        // Actualizar el numero visible inmediatamente (se ve en la mitad inferior)
+        numEl.textContent = value;
+
+        // Animar caida
+        requestAnimationFrame(() => {
+          flapDown.classList.add('anim-down');
+          flapDown.addEventListener('animationend', () => {
+            flapDown.remove();
+          }, { once: true });
+        });
+      }
+
+      /* ═══════════════════════════════════════
+         SCROLL REVEAL
+      ═══════════════════════════════════════ */
+      function initReveal() {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+          return;
+        }
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      }
+
+      /* ═══════════════════════════════════════
+         PETALS — Zona A
+      ═══════════════════════════════════════ */
+      function spawnPetals() {
+        const container = $('petals-container');
+        if (!container) return;
+        const shapes = [
+          `<svg width="13" height="11" viewBox="0 0 13 11"><ellipse cx="6.5" cy="5.5" rx="5.5" ry="3.5" fill="#f9d4de" opacity="0.65"/></svg>`,
+          `<svg width="10" height="10" viewBox="0 0 10 10"><ellipse cx="5" cy="5" rx="4" ry="2.8" fill="#e8a0b4" opacity="0.55" transform="rotate(30 5 5)"/></svg>`,
+          `<svg width="9" height="9" viewBox="0 0 9 9"><ellipse cx="4.5" cy="4.5" rx="3.5" ry="2.5" fill="#c97a96" opacity="0.4"/></svg>`,
+          `<svg width="14" height="9" viewBox="0 0 14 9" opacity="0.5"><path d="M7 4.5C6 2 3 1 1.5 2.5 0 4 2 5 7 4.5 12 4 14 4 12.5 2.5 11 1 8 2 7 4.5Z" fill="#e8a0b4"/></svg>`,
+        ];
+        for (let i = 0; i < 14; i++) {
+          const el = document.createElement('div');
+          el.className = 'petal';
+          el.innerHTML = shapes[i % shapes.length];
+          el.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * -15}%;animation-duration:${7 + Math.random() * 9}s;animation-delay:${Math.random() * 8}s;`;
+          container.appendChild(el);
+        }
+      }
+
+      let envInterval = null;
+      function startEnvelopes() {
+        const sec = $('env-container');
+        if (!sec || envInterval) return;
+
+        envInterval = setInterval(() => {
+          const env = document.createElement('div');
+          env.className = 'env-particle';
+          env.style.left = (Math.random() * 90 + 5) + '%';
+          const duration = 3.5 + Math.random() * 3.5;
+          env.style.animationDuration = duration + 's';
+
+          // Tilt aleatorio inicial
+          env.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
+
+          sec.appendChild(env);
+
+          setTimeout(() => {
+            if (env.parentNode === sec) env.remove();
+          }, duration * 1000);
+        }, 700);
+      }
+
+      function stopEnvelopes() {
+        if (envInterval) {
+          clearInterval(envInterval);
+          envInterval = null;
+        }
+      }
+
+      function initEnvelopeSpawner() {
+        const sec = $('gifts-sec');
+        if (!sec) return;
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (e.isIntersecting) startEnvelopes();
+            else stopEnvelopes();
+          });
+        }, { threshold: 0.15 });
+        obs.observe(sec);
+      }
+
+      /* ═══════════════════════════════════════
+         TRANSICION — bidireccional
+      ═══════════════════════════════════════ */
+      const transZone = $('transition-zone');
+      let trState = 'idle'; // 'idle' | 'forward' | 'backward'
+      let lastScrollY = 0;
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      function onScroll() {
+        const scrollY = window.scrollY;
+        const scrollingDown = scrollY > lastScrollY;
+        lastScrollY = scrollY;
+
+        if (!transZone) return;
+        const rect = transZone.getBoundingClientRect();
+        const vH = winH;
+
+        // Activar transicion (scroll hacia abajo)
+        if (scrollingDown && rect.top < vH * 0.45 && rect.bottom > 0 && trState !== 'forward') {
+          triggerForward();
+        }
+
+        // Revertir transicion (scroll hacia arriba) — permitir desde 'forward' o 'backward'
+        if (!scrollingDown && rect.top > vH * 0.35 && (trState === 'forward' || trState === 'backward')) {
+          triggerReverse();
+        }
+      }
+
+      function triggerForward() {
+        if (trState === 'forward') return;
+        trState = 'forward';
+        transZone.classList.remove('reset');
+
+        // La musica cambia cuando la pelota (ZONA B) irrumpe la pantalla
+        switchZone('b');
+
+        setTimeout(() => transZone.classList.add('cracking'), 80);
+        setTimeout(() => {
+          transZone.classList.add('activated');
+          spawnParticles();
+        }, 320);
+      }
+
+      function triggerReverse() {
+        if (trState === 'idle') return;
+        trState = 'backward';
+        transZone.classList.add('reset');
+        transZone.classList.remove('activated', 'cracking');
+
+        // La musica regresa cuando subimos a la ZONA A
+        switchZone('a');
 
         setTimeout(() => {
-          if (env.parentNode === sec) env.remove();
-        }, duration * 1000);
-      }, 700);
-    }
-
-    /* ═══════════════════════════════════════
-       TRANSICION — bidireccional
-    ═══════════════════════════════════════ */
-    const transZone = $('transition-zone');
-    let trState = 'idle'; // 'idle' | 'forward' | 'backward'
-    let lastScrollY = 0;
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    function onScroll() {
-      const scrollY = window.scrollY;
-      const scrollingDown = scrollY > lastScrollY;
-      lastScrollY = scrollY;
-
-      if (!transZone) return;
-      const rect = transZone.getBoundingClientRect();
-      const vH = window.innerHeight;
-
-      // Activar transicion (scroll hacia abajo)
-      if (scrollingDown && rect.top < vH * 0.45 && rect.bottom > 0 && trState !== 'forward') {
-        triggerForward();
+          transZone.classList.remove('reset');
+          trState = 'idle';
+        }, 800);
       }
 
-      // Revertir transicion (scroll hacia arriba) — permitir desde 'forward' o 'backward'
-      if (!scrollingDown && rect.top > vH * 0.35 && (trState === 'forward' || trState === 'backward')) {
-        triggerReverse();
-      }
-    }
-
-    function triggerForward() {
-      if (trState === 'forward') return;
-      trState = 'forward';
-      transZone.classList.remove('reset');
-
-      // La musica cambia cuando la pelota (ZONA B) irrumpe la pantalla
-      switchZone('b');
-
-      setTimeout(() => transZone.classList.add('cracking'), 80);
-      setTimeout(() => {
-        transZone.classList.add('activated');
-        spawnParticles();
-      }, 320);
-    }
-
-    function triggerReverse() {
-      if (trState === 'idle') return;
-      trState = 'backward';
-      transZone.classList.add('reset');
-      transZone.classList.remove('activated', 'cracking');
-
-      // La musica regresa cuando subimos a la ZONA A
-      switchZone('a');
-
-      setTimeout(() => {
-        transZone.classList.remove('reset');
-        trState = 'idle';
-      }, 800);
-    }
-
-    function spawnParticles() {
-      const c = $('tr-particles');
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      const cls = ['#e8a0b4', '#f9d4de', '#d94a2b', '#f5f0e8', '#c4924a', '#fff'];
-      for (let i = 0; i < 22; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        const sz = 4 + Math.random() * 9;
-        const a = (Math.PI * 2 * i) / 22;
-        const dist = 55 + Math.random() * 110;
-        p.style.cssText = `
+      function spawnParticles() {
+        const c = $('tr-particles');
+        const cx = window.innerWidth / 2;
+        const cy = window.innerHeight / 2;
+        const cls = ['#e8a0b4', '#f9d4de', '#d94a2b', '#f5f0e8', '#c4924a', '#fff'];
+        for (let i = 0; i < 22; i++) {
+          const p = document.createElement('div');
+          p.className = 'particle';
+          const sz = 4 + Math.random() * 9;
+          const a = (Math.PI * 2 * i) / 22;
+          const dist = 55 + Math.random() * 110;
+          p.style.cssText = `
       left:${cx}px;top:${cy}px;
       width:${sz}px;height:${sz}px;
       background:${cls[Math.floor(Math.random() * cls.length)]};
@@ -3334,139 +3254,79 @@
       --d:${0.5 + Math.random() * 0.55}s;--dl:${Math.random() * 0.18}s;
       transform:translate(-50%,-50%);
     `;
-        c.appendChild(p);
-        setTimeout(() => p.remove(), 900);
-      }
-    }
-
-    /* ═══════════════════════════════════════
-       DETECCION DE MUSICA BIDIRECCIONAL
-    ═══════════════════════════════════════ */
-    const zonaA = $('zona-a');
-    const zonaB = $('zona-b');
-
-    let currentZone = 'a';
-    let isPlaying = false;
-
-    const audioA = $('audio-a');
-    const musicBtn = $('music-btn');
-
-    function switchZone(zone) {
-      if (currentZone === zone) return;
-      const was = currentZone;
-      currentZone = zone;
-
-      // Ripple en boton
-      const r = document.createElement('div');
-      r.className = 'zone-ripple';
-      r.style.background = zone === 'b' ? 'rgba(217,74,43,0.4)' : 'rgba(232,160,180,0.4)';
-      musicBtn.appendChild(r);
-      setTimeout(() => r.remove(), 600);
-
-      musicBtn.classList.remove('zone-a', 'zone-b');
-      musicBtn.classList.add('zone-' + zone);
-
-      // Se mantiene el diseño de las burbujas cambiantes, pero reproducimos una sola canción sin cross-fade.
-    }
-
-
-
-    $('music-btn').addEventListener('click', toggleMusic, { passive: true });
-
-    let fadeInterval = null;
-    function toggleMusic() {
-      if (fadeInterval) clearInterval(fadeInterval);
-
-      if (isPlaying) {
-        isPlaying = false;
-        musicBtn.classList.remove('playing');
-
-        // Fade out
-        fadeInterval = setInterval(() => {
-          if (audioA.volume > 0.02) {
-            audioA.volume -= 0.02;
-          } else {
-            audioA.volume = 0;
-            audioA.pause();
-            clearInterval(fadeInterval);
-          }
-        }, 20);
-      } else {
-        isPlaying = true;
-        musicBtn.classList.add('playing');
-
-        audioA.volume = 0;
-        audioA.play().catch(() => { });
-
-        // Fade in
-        fadeInterval = setInterval(() => {
-          if (audioA.volume < 0.98) {
-            audioA.volume += 0.02;
-          } else {
-            audioA.volume = 1;
-            clearInterval(fadeInterval);
-          }
-        }, 20);
-      }
-    }
-
-    /* ═══════════════════════════════════════
-       CONFETTI — seccion de gracias
-    ═══════════════════════════════════════ */
-    const confCanvas = $('confetti-canvas');
-    const confCtx = confCanvas ? confCanvas.getContext('2d') : null;
-    let confRunning = false;
-
-    const thanksObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting && !confRunning) {
-          confRunning = true;
-          launchConfetti();
+          c.appendChild(p);
+          setTimeout(() => p.remove(), 900);
         }
-      });
-    }, { threshold: 0.4 });
-
-    const thanksEl = qs('.thanks-section');
-    if (thanksEl) thanksObs.observe(thanksEl);
-
-    function launchConfetti() {
-      if (!confCanvas || !confCtx) return;
-      confCanvas.style.opacity = 1;
-      confCanvas.width = window.innerWidth;
-      confCanvas.height = window.innerHeight;
-
-      const colors = ['#e8a0b4', '#f9d4de', '#d94a2b', '#c4924a', '#f5f0e8', '#c97a96', '#1c1f24'];
-      const pieces = Array.from({ length: 70 }, () => ({
-        x: Math.random() * confCanvas.width,
-        y: Math.random() * -confCanvas.height,
-        sz: 5 + Math.random() * 7,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        rot: Math.random() * Math.PI * 2,
-        rotS: (Math.random() - 0.5) * 0.08,
-        sx: (Math.random() - 0.5) * 2.5,
-        sy: 1.8 + Math.random() * 2.5,
-        shape: Math.random() > 0.45 ? 'rect' : 'circ',
-      }));
-
-      let frame = 0;
-      function animate() {
-        confCtx.clearRect(0, 0, confCanvas.width, confCanvas.height);
-        pieces.forEach(p => {
-          p.x += p.sx; p.y += p.sy; p.rot += p.rotS;
-          if (p.y > confCanvas.height) { p.y = -14; p.x = Math.random() * confCanvas.width; }
-          confCtx.save();
-          confCtx.translate(p.x, p.y);
-          confCtx.rotate(p.rot);
-          confCtx.fillStyle = p.color;
-          if (p.shape === 'rect') confCtx.fillRect(-p.sz / 2, -p.sz / 4, p.sz, p.sz / 2);
-          else { confCtx.beginPath(); confCtx.arc(0, 0, p.sz / 2, 0, Math.PI * 2); confCtx.fill(); }
-          confCtx.restore();
-        });
-        if (++frame < 280) requestAnimationFrame(animate);
-        else { confCanvas.style.opacity = 0; confRunning = false; }
       }
-      requestAnimationFrame(animate);
-    }
+
+      /* ═══════════════════════════════════════
+         DETECCION DE MUSICA BIDIRECCIONAL
+      ═══════════════════════════════════════ */
+      let currentZone = 'a';
+      let isPlaying = false;
+
+      const audioA = $('audio-a');
+      const musicBtn = $('music-btn');
+
+      function switchZone(zone) {
+        if (currentZone === zone) return;
+        currentZone = zone;
+
+        // Ripple en boton
+        const r = document.createElement('div');
+        r.className = 'zone-ripple';
+        r.style.background = zone === 'b' ? 'rgba(217,74,43,0.4)' : 'rgba(232,160,180,0.4)';
+        musicBtn.appendChild(r);
+        setTimeout(() => r.remove(), 600);
+
+        musicBtn.classList.remove('zone-a', 'zone-b');
+        musicBtn.classList.add('zone-' + zone);
+
+        // Se mantiene el diseño de las burbujas cambiantes, pero reproducimos una sola canción sin cross-fade.
+      }
+
+
+
+      $('music-btn').addEventListener('click', toggleMusic, { passive: true });
+
+      let fadeInterval = null;
+      function toggleMusic() {
+        if (fadeInterval) clearInterval(fadeInterval);
+
+        if (isPlaying) {
+          isPlaying = false;
+          musicBtn.classList.remove('playing');
+
+          // Fade out
+          fadeInterval = setInterval(() => {
+            if (audioA.volume > 0.02) {
+              audioA.volume -= 0.02;
+            } else {
+              audioA.volume = 0;
+              audioA.pause();
+              clearInterval(fadeInterval);
+            }
+          }, 20);
+        } else {
+          isPlaying = true;
+          musicBtn.classList.add('playing');
+
+          audioA.volume = 0;
+          audioA.play().catch(() => { });
+
+          // Fade in
+          fadeInterval = setInterval(() => {
+            if (audioA.volume < 0.98) {
+              audioA.volume += 0.02;
+            } else {
+              audioA.volume = 1;
+              clearInterval(fadeInterval);
+            }
+          }, 20);
+        }
+      }
+
+    })(); // End IIFE
   </script>
 </body>
 
