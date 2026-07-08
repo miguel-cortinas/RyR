@@ -224,57 +224,47 @@
       color: rgba(20, 22, 26, 0.09);
     }
 
-    /* Animaciones de flotación suave y diferenciada */
+    /* Animaciones de flotación rápida y "bouncy" (casual) */
     @keyframes wmFloat1 {
-
-      0%,
-      100% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(0px);
+      0%, 100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) scale(1);
       }
-
       50% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(-7px);
+        transform: var(--wm-base-t, rotate(0deg)) translateY(-20px) scale(1.08);
       }
     }
 
     @keyframes wmFloat2 {
-
-      0%,
-      100% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(0px);
+      0%, 100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) scale(1);
       }
-
       50% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(6px);
+        transform: var(--wm-base-t, rotate(0deg)) translateY(20px) scale(1.08);
       }
     }
 
     @keyframes wmFloat3 {
-
-      0%,
-      100% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px);
+      0%, 100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px) scale(1);
       }
-
       33% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(-5px) translateX(4px);
+        transform: var(--wm-base-t, rotate(0deg)) translateY(-15px) translateX(12px) scale(1.05);
       }
-
       66% {
-        transform: var(--wm-base-t, rotate(0deg)) translateY(4px) translateX(-3px);
+        transform: var(--wm-base-t, rotate(0deg)) translateY(15px) translateX(-12px) scale(1.08);
       }
     }
 
     #watermark-names span:nth-child(odd) {
-      animation: wmFloat1 8s ease-in-out infinite;
+      animation: wmFloat1 4.5s ease-in-out infinite;
     }
 
     #watermark-names span:nth-child(even) {
-      animation: wmFloat2 10s ease-in-out infinite;
+      animation: wmFloat2 5s ease-in-out infinite;
     }
 
     #watermark-names span:nth-child(3n) {
-      animation: wmFloat3 12s ease-in-out infinite;
+      animation: wmFloat3 6.5s ease-in-out infinite;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -512,7 +502,7 @@
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.32);
       touch-action: manipulation;
     }
-    
+
     /* Aumentar área táctil invisible a mín 44x44 (aunque el botón ya es 50x50, esto previene fallos) */
     #music-btn::before {
       content: '';
@@ -2013,9 +2003,17 @@
     }
 
     @keyframes pulseGlow {
-      0% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.8); }
-      50% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 20px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0); }
+      0% {
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.8);
+      }
+
+      50% {
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     .btn-wa:hover {
@@ -2406,7 +2404,7 @@
         </div>
 
         <h1 class="hero-a-name">Renata</h1>
-        <p class="hero-a-age">celebra sus 13 años</p>
+        <p class="hero-a-age">celebra sus 14 años</p>
 
         <!-- Cadena de perlas SVG -->
         <div class="pearl-chain" aria-hidden="true">
@@ -3378,11 +3376,11 @@
     let fadeInterval = null;
     function toggleMusic() {
       if (fadeInterval) clearInterval(fadeInterval);
-      
+
       if (isPlaying) {
         isPlaying = false;
         musicBtn.classList.remove('playing');
-        
+
         // Fade out
         fadeInterval = setInterval(() => {
           if (audioA.volume > 0.02) {
@@ -3396,10 +3394,10 @@
       } else {
         isPlaying = true;
         musicBtn.classList.add('playing');
-        
+
         audioA.volume = 0;
-        audioA.play().catch(() => {});
-        
+        audioA.play().catch(() => { });
+
         // Fade in
         fadeInterval = setInterval(() => {
           if (audioA.volume < 0.98) {
