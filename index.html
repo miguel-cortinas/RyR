@@ -23,8 +23,8 @@
   <meta property="og:title" content="¡Estás invitado/a! 🎉">
   <meta property="og:description"
     content="Te invito a celebrar juntos el 24 de julio de 2026. Toca para abrir tu invitación.">
-  <meta property="og:image" content="https://ruben-y-renata.pages.dev/img/preview.jpeg">
-  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image" content="https://ruben-y-renata.pages.dev/img/preview.png">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1536">
   <meta property="og:image:height" content="2752">
   <meta property="og:image:alt" content="Renata — invitación 24 de julio 2026">
@@ -35,7 +35,7 @@
   <meta name="twitter:title" content="¡Estás invitado! · Renata">
   <meta name="twitter:description"
     content="¡Estás invitado! Renata celebra sus 14 años el 24 de julio de 2026. Toca para abrir tu invitación.">
-  <meta name="twitter:image" content="https://ruben-y-renata.pages.dev/img/preview.jpeg">
+  <meta name="twitter:image" content="https://ruben-y-renata.pages.dev/img/preview.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,23 +56,23 @@
        TOKENS
     ═══════════════════════════════════════ */
     :root {
-      --cq-cream:      #fef6f0;
-      --cq-blush:      #fce8ef;
-      --cq-rose:       #e8a0b4;
-      --cq-rose-dark:  #c97a96;
-      --cq-nude:       #d4a5a5;
-      --cq-gold:       #c9a96e;
-      --cq-text:       #5c3246;
-      --cq-text-mid:   #935870;
+      --cq-cream: #fef6f0;
+      --cq-blush: #fce8ef;
+      --cq-rose: #e8a0b4;
+      --cq-rose-dark: #c97a96;
+      --cq-nude: #d4a5a5;
+      --cq-gold: #c9a96e;
+      --cq-text: #5c3246;
+      --cq-text-mid: #935870;
       --cq-text-light: #c2889c;
 
-      --ff-serif:  'Playfair Display', Georgia, serif;
+      --ff-serif: 'Playfair Display', Georgia, serif;
       --ff-italic: 'Cormorant Garamond', serif;
-      --ff-sans:   'Lato', sans-serif;
+      --ff-sans: 'Lato', sans-serif;
 
-      --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
       --ease-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
-      --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* ═══ RESET ═══ */
@@ -127,44 +127,64 @@
         background-color: var(--cq-cream) !important;
         color: var(--cq-text) !important;
       }
+
       body {
         background-color: var(--cq-cream) !important;
         color: var(--cq-text) !important;
       }
+
       /* Splash y contenedor principal */
       #cover,
       #splash-shell {
         background-color: var(--cq-cream) !important;
       }
+
       /* Zona A completa */
       #zona-a {
         background: var(--cq-cream) !important;
       }
+
       /* Tarjetas con glass: forzar fondo visible */
       .event-card-a {
         background: rgba(255, 255, 255, 0.50) !important;
         border-color: rgba(255, 255, 255, 0.60) !important;
       }
+
       .pool-card-a {
         background: linear-gradient(135deg, rgba(249, 212, 222, 0.45), rgba(232, 160, 180, 0.25)) !important;
         border-color: rgba(255, 255, 255, 0.50) !important;
       }
+
       .flip-inner {
         background: rgba(255, 255, 255, 0.55) !important;
         border-color: rgba(255, 255, 255, 0.80) !important;
       }
+
       .pool-item-a {
         background: rgba(255, 255, 255, 0.72) !important;
       }
+
       /* Textos: asegurar que no hereden colores del OS */
-      .hero-a-name, .sec-a-title, .pool-title-a, .flip-num {
+      .hero-a-name,
+      .sec-a-title,
+      .pool-title-a,
+      .flip-num {
         color: var(--cq-text) !important;
       }
-      .hero-a-age, .hero-a-quote, .flip-lbl, .rsvp-intro,
-      .ev-value-a, .gifts-text, .pool-item-a {
+
+      .hero-a-age,
+      .hero-a-quote,
+      .flip-lbl,
+      .rsvp-intro,
+      .ev-value-a,
+      .gifts-text,
+      .pool-item-a {
         color: var(--cq-text-mid) !important;
       }
-      .a-eyebrow, .sec-a-eyebrow, .ev-label,
+
+      .a-eyebrow,
+      .sec-a-eyebrow,
+      .ev-label,
       .scroll-hint-a span {
         color: var(--cq-rose-dark) !important;
       }
@@ -235,24 +255,56 @@
     }
 
     @keyframes wmFloat1 {
-      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px)   scale(1);    }
-      50%       { transform: var(--wm-base-t, rotate(0deg)) translateY(-20px) scale(1.08); }
+
+      0%,
+      100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) scale(1);
+      }
+
+      50% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(-20px) scale(1.08);
+      }
     }
 
     @keyframes wmFloat2 {
-      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px)  scale(1);    }
-      50%      { transform: var(--wm-base-t, rotate(0deg)) translateY(20px) scale(1.08); }
+
+      0%,
+      100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) scale(1);
+      }
+
+      50% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(20px) scale(1.08);
+      }
     }
 
     @keyframes wmFloat3 {
-      0%, 100% { transform: var(--wm-base-t, rotate(0deg)) translateY(0px)   translateX(0px)   scale(1);    }
-      33%      { transform: var(--wm-base-t, rotate(0deg)) translateY(-15px)  translateX(12px)  scale(1.05); }
-      66%      { transform: var(--wm-base-t, rotate(0deg)) translateY(15px)   translateX(-12px) scale(1.08); }
+
+      0%,
+      100% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(0px) translateX(0px) scale(1);
+      }
+
+      33% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(-15px) translateX(12px) scale(1.05);
+      }
+
+      66% {
+        transform: var(--wm-base-t, rotate(0deg)) translateY(15px) translateX(-12px) scale(1.08);
+      }
     }
 
-    #watermark-names span:nth-child(odd)  { animation: wmFloat1 4.5s ease-in-out infinite; }
-    #watermark-names span:nth-child(even) { animation: wmFloat2 5s   ease-in-out infinite; }
-    #watermark-names span:nth-child(3n)   { animation: wmFloat3 6.5s ease-in-out infinite; }
+    #watermark-names span:nth-child(odd) {
+      animation: wmFloat1 4.5s ease-in-out infinite;
+    }
+
+    #watermark-names span:nth-child(even) {
+      animation: wmFloat2 5s ease-in-out infinite;
+    }
+
+    #watermark-names span:nth-child(3n) {
+      animation: wmFloat3 6.5s ease-in-out infinite;
+    }
 
     #cover.leaving {
       opacity: 0;
@@ -273,7 +325,10 @@
     }
 
     @keyframes popIn {
-      to { opacity: 1; transform: scale(1); }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     #cuerpo {
@@ -305,9 +360,19 @@
     }
 
     @keyframes slideLetter {
-      0%   { opacity: 0; transform: translateX(-50%) translateY(10%);  }
-      20%  { opacity: 1; }
-      100% { opacity: 1; transform: translateX(-50%) translateY(-60%); }
+      0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(10%);
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(-60%);
+      }
     }
 
     #carta {
@@ -390,8 +455,15 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.7; }
-      50%       { opacity: 1;   }
+
+      0%,
+      100% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     /* Halo pulsante */
@@ -431,8 +503,15 @@
     }
 
     @keyframes haloRipple {
-      0%   { transform: scale(0.5); opacity: 0.7; }
-      100% { transform: scale(1.9); opacity: 0;   }
+      0% {
+        transform: scale(0.5);
+        opacity: 0.7;
+      }
+
+      100% {
+        transform: scale(1.9);
+        opacity: 0;
+      }
     }
 
     /* ═══════════════════════════════════════
@@ -493,8 +572,13 @@
       height: 16px;
     }
 
-    #music-btn.playing .eq-bars   { display: flex; }
-    #music-btn.playing .ico-music { display: none; }
+    #music-btn.playing .eq-bars {
+      display: flex;
+    }
+
+    #music-btn.playing .ico-music {
+      display: none;
+    }
 
     .eq-bar {
       width: 3px;
@@ -503,14 +587,35 @@
       animation: eqB 0.8s ease-in-out infinite;
     }
 
-    .eq-bar:nth-child(1) { height: 8px;  }
-    .eq-bar:nth-child(2) { height: 14px; animation-delay: .15s; }
-    .eq-bar:nth-child(3) { height: 10px; animation-delay: .3s;  }
-    .eq-bar:nth-child(4) { height: 6px;  animation-delay: .1s;  }
+    .eq-bar:nth-child(1) {
+      height: 8px;
+    }
+
+    .eq-bar:nth-child(2) {
+      height: 14px;
+      animation-delay: .15s;
+    }
+
+    .eq-bar:nth-child(3) {
+      height: 10px;
+      animation-delay: .3s;
+    }
+
+    .eq-bar:nth-child(4) {
+      height: 6px;
+      animation-delay: .1s;
+    }
 
     @keyframes eqB {
-      0%, 100% { transform: scaleY(0.35); }
-      50%       { transform: scaleY(1);   }
+
+      0%,
+      100% {
+        transform: scaleY(0.35);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
     }
 
     .zone-ripple {
@@ -522,8 +627,15 @@
     }
 
     @keyframes ripple {
-      from { transform: scale(0); opacity: 0.6; }
-      to   { transform: scale(3); opacity: 0;   }
+      from {
+        transform: scale(0);
+        opacity: 0.6;
+      }
+
+      to {
+        transform: scale(3);
+        opacity: 0;
+      }
     }
 
     /* ═══════════════════════════════════════
@@ -595,9 +707,7 @@
       justify-content: center;
       text-align: center;
       /* safe-area-inset: respeta notch superior e inferior en iPhone X+ */
-      padding: calc(clamp(70px, 12vw, 100px) + env(safe-area-inset-top, 0px))
-               clamp(20px, 6vw, 40px)
-               calc(clamp(50px, 8vw, 70px) + env(safe-area-inset-bottom, 0px));
+      padding: calc(clamp(70px, 12vw, 100px) + env(safe-area-inset-top, 0px)) clamp(20px, 6vw, 40px) calc(clamp(50px, 8vw, 70px) + env(safe-area-inset-bottom, 0px));
       position: relative;
       z-index: 1;
     }
@@ -695,8 +805,17 @@
     }
 
     @keyframes chev {
-      0%, 100% { transform: rotate(45deg) translateY(0);  opacity: 0.4; }
-      50%       { transform: rotate(45deg) translateY(5px); opacity: 0.8; }
+
+      0%,
+      100% {
+        transform: rotate(45deg) translateY(0);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: rotate(45deg) translateY(5px);
+        opacity: 0.8;
+      }
     }
 
     /* Pétalos */
@@ -709,10 +828,23 @@
     }
 
     @keyframes petalFall {
-      0%   { transform: translateY(-30px)  rotate(0deg);   opacity: 0;    }
-      8%   {                                               opacity: 0.55; }
-      92%  {                                               opacity: 0.25; }
-      100% { transform: translateY(110vh) rotate(540deg); opacity: 0;    }
+      0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 0;
+      }
+
+      8% {
+        opacity: 0.55;
+      }
+
+      92% {
+        opacity: 0.25;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(540deg);
+        opacity: 0;
+      }
     }
 
     /* ── Secciones ── */
@@ -757,6 +889,7 @@
       position: relative;
       z-index: 2;
     }
+
     /* Liquid Glass Pro Max */
     @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
       .event-card-a {
@@ -768,7 +901,7 @@
         border-left-color: rgba(255, 255, 255, 0.5);
         border-right-color: rgba(255, 255, 255, 0.1);
         border-bottom-color: rgba(255, 255, 255, 0.1);
-        box-shadow: 
+        box-shadow:
           0 16px 40px rgba(201, 122, 150, 0.15),
           0 4px 12px rgba(201, 122, 150, 0.08),
           inset 0 1px 2px rgba(255, 255, 255, 0.9),
@@ -921,6 +1054,7 @@
       position: relative;
       z-index: 2;
     }
+
     @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
       .pool-card-a {
         background: linear-gradient(135deg, rgba(249, 212, 222, 0.4) 0%, rgba(232, 160, 180, 0.15) 100%);
@@ -931,7 +1065,7 @@
         border-left-color: rgba(255, 255, 255, 0.4);
         border-right-color: rgba(255, 255, 255, 0.1);
         border-bottom-color: rgba(255, 255, 255, 0.1);
-        box-shadow: 
+        box-shadow:
           0 16px 40px rgba(201, 122, 150, 0.15),
           0 4px 12px rgba(201, 122, 150, 0.08),
           inset 0 1px 2px rgba(255, 255, 255, 0.8),
@@ -1019,6 +1153,7 @@
       justify-content: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
       .flip-inner {
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.2) 100%);
@@ -1043,6 +1178,7 @@
         0 12px 28px rgba(201, 122, 150, 0.18),
         inset 0 2px 4px rgba(255, 255, 255, 0.9);
     }
+
     @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
       .flip-card:hover .flip-inner {
         box-shadow:
@@ -1114,9 +1250,17 @@
     }
 
     @keyframes pulseGlow {
-      0%   { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0  rgba(37, 211, 102, 0.8); }
-      50%  { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 20px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0  rgba(37, 211, 102, 0); }
+      0% {
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.8);
+      }
+
+      50% {
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 20px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0);
+      }
     }
 
     .btn-wa:hover {
@@ -1223,20 +1367,47 @@
        KEYFRAMES GLOBALES
     ═══════════════════════════════════════ */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0);    }
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-12px); }
-      to   { opacity: 1; transform: translateY(0);     }
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fallEnvelope {
-      0%   { transform: translateY(-20px)  rotate(-15deg); opacity: 0; }
-      10%  {                                                opacity: 1; }
-      80%  {                                                opacity: 1; }
-      100% { transform: translateY(110vh) rotate(20deg);   opacity: 0; }
+      0% {
+        transform: translateY(-20px) rotate(-15deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(20deg);
+        opacity: 0;
+      }
     }
 
     /* ═══════════════════════════════════════
@@ -1245,13 +1416,22 @@
 
     /* Teléfonos muy pequeños (SE 1ra gen, Galaxy A) */
     @media (max-width: 360px) {
-      .flip-grid    { gap: 5px; }
-      .pool-items-a { grid-template-columns: 1fr; }
-      .hero-a-name  { font-size: clamp(46px, 17vw, 68px); }
+      .flip-grid {
+        gap: 5px;
+      }
+
+      .pool-items-a {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-a-name {
+        font-size: clamp(46px, 17vw, 68px);
+      }
     }
 
     /* Tablets y pantallas medianas */
     @media (min-width: 600px) {
+
       .sec-a,
       .orn-a {
         max-width: 680px;
@@ -1265,6 +1445,7 @@
         padding-top: 40px;
         padding-bottom: 40px;
       }
+
       #envelope-wrapper {
         width: min(55vw, 280px);
       }
@@ -1276,6 +1457,7 @@
       outline-offset: 3px;
       border-radius: 4px;
     }
+
     /* Quitar outline en tap (móvil) pero mantenerlo en teclado */
     :focus:not(:focus-visible) {
       outline: none;
@@ -1283,6 +1465,7 @@
 
     /* Reduced motion: respeta preferencias de accesibilidad del SO */
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
@@ -1290,10 +1473,17 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
+
       /* Asegurar que elementos con opacity:0 queden visibles */
-      .a-eyebrow, .bow-wrap, .hero-a-name, .hero-a-age,
-      .pearl-chain, .hero-a-quote, .scroll-hint-a,
-      #envelope-wrapper, #hint-wrap {
+      .a-eyebrow,
+      .bow-wrap,
+      .hero-a-name,
+      .hero-a-age,
+      .pearl-chain,
+      .hero-a-quote,
+      .scroll-hint-a,
+      #envelope-wrapper,
+      #hint-wrap {
         opacity: 1 !important;
         transform: none !important;
       }
@@ -1310,24 +1500,36 @@
     <div id="cover" role="button" aria-label="Abrir invitación">
       <div id="watermark-names" aria-hidden="true">
         <!-- Fila superior -->
-        <span style="top:2%;  left:-4%;   font-size:clamp(36px,16vw,92px);  --wm-base-t:rotate(-10deg); animation-delay:0s;">Renata</span>
-        <span style="top:0%;  left:38%;   font-size:clamp(18px,8vw, 48px);  --wm-base-t:rotate(4deg);  animation-delay:-2s;">Renata</span>
-        <span style="top:10%; right:-10%; font-size:clamp(26px,12vw,72px);  --wm-base-t:rotate(8deg);  animation-delay:-5s;">Renata</span>
+        <span
+          style="top:2%;  left:-4%;   font-size:clamp(36px,16vw,92px);  --wm-base-t:rotate(-10deg); animation-delay:0s;">Renata</span>
+        <span
+          style="top:0%;  left:38%;   font-size:clamp(18px,8vw, 48px);  --wm-base-t:rotate(4deg);  animation-delay:-2s;">Renata</span>
+        <span
+          style="top:10%; right:-10%; font-size:clamp(26px,12vw,72px);  --wm-base-t:rotate(8deg);  animation-delay:-5s;">Renata</span>
 
         <!-- Zona media-alta -->
-        <span style="top:22%; left:5%;    font-size:clamp(16px,7vw, 42px);  --wm-base-t:rotate(-4deg); animation-delay:-1s;">Renata</span>
-        <span style="top:30%; right:-2%;  font-size:clamp(22px,10vw,58px);  --wm-base-t:rotate(5deg);  animation-delay:-7s;">Renata</span>
-        <span style="top:38%; left:-8%;   font-size:clamp(30px,13vw,78px);  --wm-base-t:rotate(-6deg); animation-delay:-3s;">Renata</span>
+        <span
+          style="top:22%; left:5%;    font-size:clamp(16px,7vw, 42px);  --wm-base-t:rotate(-4deg); animation-delay:-1s;">Renata</span>
+        <span
+          style="top:30%; right:-2%;  font-size:clamp(22px,10vw,58px);  --wm-base-t:rotate(5deg);  animation-delay:-7s;">Renata</span>
+        <span
+          style="top:38%; left:-8%;   font-size:clamp(30px,13vw,78px);  --wm-base-t:rotate(-6deg); animation-delay:-3s;">Renata</span>
 
         <!-- Zona media -->
-        <span style="top:50%; left:28%;   font-size:clamp(14px,6vw, 34px);  --wm-base-t:rotate(3deg);  animation-delay:-9s;">Renata</span>
-        <span style="top:56%; right:-5%;  font-size:clamp(20px,9vw, 54px);  --wm-base-t:rotate(7deg);  animation-delay:-4s;">Renata</span>
+        <span
+          style="top:50%; left:28%;   font-size:clamp(14px,6vw, 34px);  --wm-base-t:rotate(3deg);  animation-delay:-9s;">Renata</span>
+        <span
+          style="top:56%; right:-5%;  font-size:clamp(20px,9vw, 54px);  --wm-base-t:rotate(7deg);  animation-delay:-4s;">Renata</span>
 
         <!-- Zona baja -->
-        <span style="top:65%; left:-6%;   font-size:clamp(28px,12vw,70px);  --wm-base-t:rotate(-7deg); animation-delay:-6s;">Renata</span>
-        <span style="top:72%; left:14%;   font-size:clamp(16px,7vw, 40px);  --wm-base-t:rotate(5deg);  animation-delay:-2.5s;">Renata</span>
-        <span style="bottom:4%; right:-4%; font-size:clamp(24px,11vw,64px); --wm-base-t:rotate(-8deg); animation-delay:-8s;">Renata</span>
-        <span style="bottom:8%; left:32%;  font-size:clamp(14px,6vw, 36px);  --wm-base-t:rotate(3deg);  animation-delay:-1.5s;">Renata</span>
+        <span
+          style="top:65%; left:-6%;   font-size:clamp(28px,12vw,70px);  --wm-base-t:rotate(-7deg); animation-delay:-6s;">Renata</span>
+        <span
+          style="top:72%; left:14%;   font-size:clamp(16px,7vw, 40px);  --wm-base-t:rotate(5deg);  animation-delay:-2.5s;">Renata</span>
+        <span
+          style="bottom:4%; right:-4%; font-size:clamp(24px,11vw,64px); --wm-base-t:rotate(-8deg); animation-delay:-8s;">Renata</span>
+        <span
+          style="bottom:8%; left:32%;  font-size:clamp(14px,6vw, 36px);  --wm-base-t:rotate(3deg);  animation-delay:-1.5s;">Renata</span>
       </div>
       <div id="envelope-wrapper">
         <img src="img/1.png" id="cuerpo" alt="" fetchpriority="high">
@@ -1422,17 +1624,23 @@
             <!-- Sombra proyectada -->
             <ellipse cx="55" cy="64" rx="28" ry="3.5" fill="rgba(180,100,130,0.18)" />
             <!-- Cintas colgantes -->
-            <path d="M50 36 Q46 50 40 63" stroke="#d4849e" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85" />
-            <path d="M60 36 Q64 50 70 63" stroke="#d4849e" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85" />
+            <path d="M50 36 Q46 50 40 63" stroke="#d4849e" stroke-width="2.2" stroke-linecap="round" fill="none"
+              opacity="0.85" />
+            <path d="M60 36 Q64 50 70 63" stroke="#d4849e" stroke-width="2.2" stroke-linecap="round" fill="none"
+              opacity="0.85" />
             <!-- Corte V en cintas -->
             <path d="M40 63 L38 60 L42 60 Z" fill="#c97a96" opacity="0.7" />
             <path d="M70 63 L68 60 L72 60 Z" fill="#c97a96" opacity="0.7" />
             <!-- Ala izquierda -->
-            <path d="M55 33 C50 22 34 13 20 17 C9 20 7 31 18 34 C30 37 46 34 55 33Z" fill="url(#bowL)" stroke="#d4849e" stroke-width="1.2" filter="url(#bowShadow)" />
-            <path d="M55 33 C50 38 36 40 24 37 C14 34 13 28 22 27 C34 26 48 30 55 33Z" fill="#f2b8cb" stroke="#d4849e" stroke-width="0.8" opacity="0.7" />
+            <path d="M55 33 C50 22 34 13 20 17 C9 20 7 31 18 34 C30 37 46 34 55 33Z" fill="url(#bowL)" stroke="#d4849e"
+              stroke-width="1.2" filter="url(#bowShadow)" />
+            <path d="M55 33 C50 38 36 40 24 37 C14 34 13 28 22 27 C34 26 48 30 55 33Z" fill="#f2b8cb" stroke="#d4849e"
+              stroke-width="0.8" opacity="0.7" />
             <!-- Ala derecha -->
-            <path d="M55 33 C60 22 76 13 90 17 C101 20 103 31 92 34 C80 37 64 34 55 33Z" fill="url(#bowR)" stroke="#d4849e" stroke-width="1.2" filter="url(#bowShadow)" />
-            <path d="M55 33 C60 38 74 40 86 37 C96 34 97 28 88 27 C76 26 62 30 55 33Z" fill="#f2b8cb" stroke="#d4849e" stroke-width="0.8" opacity="0.7" />
+            <path d="M55 33 C60 22 76 13 90 17 C101 20 103 31 92 34 C80 37 64 34 55 33Z" fill="url(#bowR)"
+              stroke="#d4849e" stroke-width="1.2" filter="url(#bowShadow)" />
+            <path d="M55 33 C60 38 74 40 86 37 C96 34 97 28 88 27 C76 26 62 30 55 33Z" fill="#f2b8cb" stroke="#d4849e"
+              stroke-width="0.8" opacity="0.7" />
             <!-- Nudo central -->
             <ellipse cx="55" cy="33" rx="8" ry="6" fill="#fce8ef" stroke="#d4849e" stroke-width="1.5" />
             <ellipse cx="55" cy="33" rx="5" ry="3.5" fill="url(#bowShine)" />
@@ -1457,19 +1665,19 @@
               </radialGradient>
             </defs>
             <line x1="0" y1="7" x2="180" y2="7" stroke="rgba(232,160,180,0.4)" stroke-width="0.8" />
-            <circle cx="7"   cy="7" r="5"   fill="url(#pearl)" />
-            <circle cx="22"  cy="7" r="4"   fill="url(#pearl)" opacity=".9" />
-            <circle cx="35"  cy="7" r="5"   fill="url(#pearl)" />
-            <circle cx="50"  cy="7" r="4"   fill="url(#pearl)" opacity=".9" />
-            <circle cx="63"  cy="7" r="5"   fill="url(#pearl)" />
-            <circle cx="78"  cy="7" r="3.5" fill="url(#pearl)" opacity=".85" />
-            <circle cx="90"  cy="7" r="6"   fill="url(#pearl)" />
+            <circle cx="7" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="22" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="35" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="50" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="63" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="78" cy="7" r="3.5" fill="url(#pearl)" opacity=".85" />
+            <circle cx="90" cy="7" r="6" fill="url(#pearl)" />
             <circle cx="102" cy="7" r="3.5" fill="url(#pearl)" opacity=".85" />
-            <circle cx="117" cy="7" r="5"   fill="url(#pearl)" />
-            <circle cx="130" cy="7" r="4"   fill="url(#pearl)" opacity=".9" />
-            <circle cx="145" cy="7" r="5"   fill="url(#pearl)" />
-            <circle cx="158" cy="7" r="4"   fill="url(#pearl)" opacity=".9" />
-            <circle cx="173" cy="7" r="5"   fill="url(#pearl)" />
+            <circle cx="117" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="130" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="145" cy="7" r="5" fill="url(#pearl)" />
+            <circle cx="158" cy="7" r="4" fill="url(#pearl)" opacity=".9" />
+            <circle cx="173" cy="7" r="5" fill="url(#pearl)" />
           </svg>
         </div>
 
@@ -1502,8 +1710,8 @@
                 stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="4" width="18" height="18" rx="2" />
                 <line x1="16" y1="2" x2="16" y2="6" />
-                <line x1="8"  y1="2" x2="8"  y2="6" />
-                <line x1="3"  y1="10" x2="21" y2="10" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+                <line x1="3" y1="10" x2="21" y2="10" />
               </svg>
             </div>
             <div>
@@ -1545,14 +1753,15 @@
         <div class="orn-line-a"></div>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="3" fill="#e8a0b4" />
-          <ellipse cx="12" cy="6"  rx="2" ry="3.5" fill="#f9d4de" opacity="0.85" />
+          <ellipse cx="12" cy="6" rx="2" ry="3.5" fill="#f9d4de" opacity="0.85" />
           <ellipse cx="12" cy="18" rx="2" ry="3.5" fill="#f9d4de" opacity="0.85" />
-          <ellipse cx="6"  cy="12" rx="3.5" ry="2" fill="#f9d4de" opacity="0.85" />
+          <ellipse cx="6" cy="12" rx="3.5" ry="2" fill="#f9d4de" opacity="0.85" />
           <ellipse cx="18" cy="12" rx="3.5" ry="2" fill="#f9d4de" opacity="0.85" />
-          <ellipse cx="7.76"  cy="7.76"  rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(45 7.76 7.76)" />
-          <ellipse cx="16.24" cy="16.24" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(45 16.24 16.24)" />
-          <ellipse cx="16.24" cy="7.76"  rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(-45 16.24 7.76)" />
-          <ellipse cx="7.76"  cy="16.24" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(-45 7.76 16.24)" />
+          <ellipse cx="7.76" cy="7.76" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(45 7.76 7.76)" />
+          <ellipse cx="16.24" cy="16.24" rx="2" ry="3" fill="#e8a0b4" opacity="0.7"
+            transform="rotate(45 16.24 16.24)" />
+          <ellipse cx="16.24" cy="7.76" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(-45 16.24 7.76)" />
+          <ellipse cx="7.76" cy="16.24" rx="2" ry="3" fill="#e8a0b4" opacity="0.7" transform="rotate(-45 7.76 16.24)" />
           <circle cx="12" cy="12" r="2" fill="#c97a96" />
         </svg>
         <div class="orn-line-a r"></div>
@@ -1583,10 +1792,14 @@
       <div class="orn-a reveal" aria-hidden="true">
         <div class="orn-line-a"></div>
         <svg width="26" height="18" viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M13 9 C10 4 3 2 1 5 C-1 8 2 12 7 11 C10 10 12 9 13 9Z"  fill="#fce8ef" stroke="#e8a0b4" stroke-width="0.8" />
-          <path d="M13 9 C16 4 23 2 25 5 C27 8 24 12 19 11 C16 10 14 9 13 9Z" fill="#fce8ef" stroke="#e8a0b4" stroke-width="0.8" />
-          <path d="M13 9 C11 12 8 15 6 14 C4 13 5 10 9 10 C11 10 12 9 13 9Z" fill="#f9d4de" stroke="#c97a96" stroke-width="0.7" opacity="0.85" />
-          <path d="M13 9 C15 12 18 15 20 14 C22 13 21 10 17 10 C15 10 14 9 13 9Z" fill="#f9d4de" stroke="#c97a96" stroke-width="0.7" opacity="0.85" />
+          <path d="M13 9 C10 4 3 2 1 5 C-1 8 2 12 7 11 C10 10 12 9 13 9Z" fill="#fce8ef" stroke="#e8a0b4"
+            stroke-width="0.8" />
+          <path d="M13 9 C16 4 23 2 25 5 C27 8 24 12 19 11 C16 10 14 9 13 9Z" fill="#fce8ef" stroke="#e8a0b4"
+            stroke-width="0.8" />
+          <path d="M13 9 C11 12 8 15 6 14 C4 13 5 10 9 10 C11 10 12 9 13 9Z" fill="#f9d4de" stroke="#c97a96"
+            stroke-width="0.7" opacity="0.85" />
+          <path d="M13 9 C15 12 18 15 20 14 C22 13 21 10 17 10 C15 10 14 9 13 9Z" fill="#f9d4de" stroke="#c97a96"
+            stroke-width="0.7" opacity="0.85" />
           <circle cx="13" cy="9" r="1.5" fill="#c97a96" />
           <line x1="13" y1="9" x2="11" y2="5" stroke="#c97a96" stroke-width="0.8" stroke-linecap="round" />
           <line x1="13" y1="9" x2="15" y2="5" stroke="#c97a96" stroke-width="0.8" stroke-linecap="round" />
@@ -1605,7 +1818,7 @@
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c97a96" stroke-width="1.8"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-                <line x1="12" y1="9"  x2="12"    y2="13" />
+                <line x1="12" y1="9" x2="12" y2="13" />
                 <line x1="12" y1="17" x2="12.01" y2="17" />
               </svg>
             </div>
@@ -1721,8 +1934,10 @@
       <div class="orn-a reveal" style="padding-bottom:20px;" aria-hidden="true">
         <div class="orn-line-a"></div>
         <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 8 C10 5 5 3 3 5 C1 7 3 10 7 9 C9.5 8.5 11 8 12 8Z"  fill="#fce8ef" stroke="#d4849e" stroke-width="0.8" />
-          <path d="M12 8 C14 5 19 3 21 5 C23 7 21 10 17 9 C14.5 8.5 13 8 12 8Z" fill="#fce8ef" stroke="#d4849e" stroke-width="0.8" />
+          <path d="M12 8 C10 5 5 3 3 5 C1 7 3 10 7 9 C9.5 8.5 11 8 12 8Z" fill="#fce8ef" stroke="#d4849e"
+            stroke-width="0.8" />
+          <path d="M12 8 C14 5 19 3 21 5 C23 7 21 10 17 9 C14.5 8.5 13 8 12 8Z" fill="#fce8ef" stroke="#d4849e"
+            stroke-width="0.8" />
           <rect x="10" y="6" width="4" height="4" rx="1.5" fill="#fce8ef" stroke="#d4849e" stroke-width="1" />
           <circle cx="12" cy="8" r="1" fill="#c97a96" />
         </svg>
@@ -1758,7 +1973,7 @@
       ═══════════════════════════════════════ */
       const $ = id => document.getElementById(id);
       const confCanvas = $('confetti-canvas');
-      const confCtx   = confCanvas ? confCanvas.getContext('2d') : null;
+      const confCtx = confCanvas ? confCanvas.getContext('2d') : null;
 
       /* ═══════════════════════════════════════
          SCROLL RESET
@@ -1771,8 +1986,8 @@
          SPLASH
       ═══════════════════════════════════════ */
       const splashShell = $('splash-shell');
-      const coverEl     = $('cover');
-      const invitation  = $('invitation');
+      const coverEl = $('cover');
+      const invitation = $('invitation');
       const musicBubble = $('music-bubble');
 
       if (coverEl) coverEl.addEventListener('click', openInvitation);
@@ -1809,7 +2024,7 @@
         if (!confCanvas || !confCtx) return;
         confCanvas.classList.add('splash-burst');
         confCanvas.style.opacity = 1;
-        confCanvas.width  = winW;
+        confCanvas.width = winW;
         confCanvas.height = winH;
 
         // Paleta Coquette únicamente
@@ -1821,16 +2036,16 @@
           const angle = Math.random() * Math.PI * 2;
           const speed = 3 + Math.random() * 9;
           return {
-            x:      cx + (Math.random() - 0.5) * 60,
-            y:      cy + (Math.random() - 0.5) * 30,
-            vx:     Math.cos(angle) * speed,
-            vy:     Math.sin(angle) * speed - 4,
+            x: cx + (Math.random() - 0.5) * 60,
+            y: cy + (Math.random() - 0.5) * 30,
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed - 4,
             gravity: 0.18 + Math.random() * 0.12,
-            sz:     5 + Math.random() * 9,
-            color:  colors[Math.floor(Math.random() * colors.length)],
-            rot:    Math.random() * Math.PI * 2,
-            rotS:   (Math.random() - 0.5) * 0.14,
-            shape:  Math.random() > 0.4 ? 'rect' : 'circ',
+            sz: 5 + Math.random() * 9,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rot: Math.random() * Math.PI * 2,
+            rotS: (Math.random() - 0.5) * 0.14,
+            shape: Math.random() > 0.4 ? 'rect' : 'circ',
             ribbon: Math.random() > 0.7,
           };
         });
@@ -1847,8 +2062,8 @@
           pieces.forEach(p => {
             p.vx *= 0.985;
             p.vy += p.gravity;
-            p.x  += p.vx;
-            p.y  += p.vy;
+            p.x += p.vx;
+            p.y += p.vy;
             p.rot += p.rotS;
             if (p.y > confCanvas.height + 20) return;
             confCtx.save();
@@ -1881,7 +2096,7 @@
          COUNTDOWN
       ═══════════════════════════════════════ */
       const TARGET_DATE = new Date('2026-07-24T16:00:00-06:00');
-      const _flipPrev   = {};
+      const _flipPrev = {};
 
       function flipSet(id, value) {
         const el = $(id);
@@ -1895,8 +2110,8 @@
         const safe = diff > 0 ? diff : 0;
         const d = Math.floor(safe / 86400000);
         const h = Math.floor((safe % 86400000) / 3600000);
-        const m = Math.floor((safe % 3600000)  / 60000);
-        const s = Math.floor((safe % 60000)    / 1000);
+        const m = Math.floor((safe % 3600000) / 60000);
+        const s = Math.floor((safe % 60000) / 1000);
         const fmt = n => String(n).padStart(2, '0');
         flipSet('b-d', fmt(d));
         flipSet('b-h', fmt(h));
@@ -1980,9 +2195,9 @@
       /* ═══════════════════════════════════════
          MÚSICA
       ═══════════════════════════════════════ */
-      let isPlaying  = false;
+      let isPlaying = false;
       let fadeInterval = null;
-      const audioA   = $('audio-a');
+      const audioA = $('audio-a');
       const musicBtn = $('music-btn');
 
       musicBtn.addEventListener('click', toggleMusic, { passive: true });
@@ -2006,7 +2221,7 @@
           isPlaying = true;
           musicBtn.classList.add('playing');
           audioA.volume = 0;
-          audioA.play().catch(() => {});
+          audioA.play().catch(() => { });
           fadeInterval = setInterval(() => {
             if (audioA.volume < 0.98) {
               audioA.volume += 0.02;
